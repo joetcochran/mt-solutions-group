@@ -324,3 +324,9 @@ button { color: inherit; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* Direct contact remains visible on small screens. */
+.about-copy .direct-contact { margin: 24px 0 0; }
+.direct-contact a, .footer-contact a { text-decoration: underline; text-underline-offset: 4px; overflow-wrap: anywhere; }
+.direct-contact a { color: white; }
+.footer-contact a { display: inline-block; margin-top: 8px; color: white; }
