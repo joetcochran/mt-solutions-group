@@ -330,3 +330,10 @@ button { color: inherit; }
 .direct-contact a, .footer-contact a { text-decoration: underline; text-underline-offset: 4px; overflow-wrap: anywhere; }
 .direct-contact a { color: white; }
 .footer-contact a { display: inline-block; margin-top: 8px; color: white; }
+
+/* Preserve the supplied portrait; rounded corners are presentation only. */
+.founder-profile { margin: 0 0 28px; }
+.founder-headshot { display: block; width: min(100%, 280px); height: auto; aspect-ratio: 1; border-radius: 24px; border: 1px solid rgba(255,255,255,.18); }
+.founder-profile figcaption { margin-top: 16px; }
+.founder-profile strong { display: block; color: white; font-size: 1.15rem; }
+.founder-profile span { display: block; margin-top: 4px; color: #bdceca; font-size: .9rem; }
