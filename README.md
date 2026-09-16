@@ -1,23 +1,22 @@
-# MT Solutions Group website concept
+# MT Solutions Group
 
-A friendly, down-to-earth one-page website concept for MT Solutions Group: practical AI automation for small and midsize businesses.
+Static brochure site for Joe Cochran's practical software and AI consulting, published on GitHub Pages at https://mtsolutions.group/.
 
-## Included
+## Pages and behavior
 
-- Responsive, accessible single-page site
-- Four-question interactive "Opportunity Finder"
-- Tailored first-step recommendations for common workflow problems
-- Preview lead-capture handoff
-- No framework or build step required
+- `index.html`: positioning, scoped first engagement (up to 12 hours of Joe's time at no charge), selected-work previews, bio, and direct contact.
+- `selected-work.html`: three systems Joe built in previous roles. Client identities and proprietary artifacts are omitted; workflow illustrations are labeled, with no invented results.
+- `app.js`: shared navigation and a four-question, local-only guided worksheet. It is not an AI chat or a feasibility assessment.
+- The worksheet uses the task, tools, frequency/effort, and goal/review requirements in a shareable brief. It offers clipboard copy, text download, and an explicitly labeled email-draft handoff.
+- No form data is submitted to a server, no email is sent automatically, and no responses are persisted after refresh. A user must send the email draft themselves. Copy/download are alternatives when no mail client is configured.
+- Real AI analysis, server-side lead delivery, and a detailed interactive citation demo remain future work.
 
-## Run locally
-
-Open `index.html`, or serve the directory with any static web server:
+## Local preview
 
 ```sh
-npx serve .
+python3 -m http.server 8766
 ```
 
-## Before production launch
+Open http://localhost:8766/. No framework or build step is required. Validate JavaScript with `node --check app.js` and review both pages on mobile and desktop before pushing to `main`.
 
-The current Opportunity Finder is a client-side guided prototype. For production, connect it to a secure server-side AI endpoint and a private lead destination. Never place model API keys in browser code.
+Never put model API keys, SMTP credentials, or client data in this public repository.
