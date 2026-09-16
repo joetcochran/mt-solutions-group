@@ -337,3 +337,8 @@ button { color: inherit; }
 .founder-profile figcaption { margin-top: 16px; }
 .founder-profile strong { display: block; color: white; font-size: 1.15rem; }
 .founder-profile span { display: block; margin-top: 4px; color: #bdceca; font-size: .9rem; }
+
+.founder-linkedin { display: inline-block; margin-top: 12px; color: white; text-decoration: underline; text-underline-offset: 4px; }
+.founder-linkedin:hover { color: var(--cream); }
+.founder-linkedin:focus-visible { outline: 2px solid white; outline-offset: 5px; border-radius: 3px; }
+.founder-profile .linkedin-external { display: inline; color: inherit; font-size: inherit; }
