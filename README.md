@@ -21,6 +21,10 @@ Open http://localhost:8766/. No framework or build step is required. Validate Ja
 
 Never put model API keys, SMTP credentials, or client data in this public repository.
 
+## Email
+
+Outbound/reply email for `mtsolutions.group` is handled by smtp2go, configured entirely at the DNS level (CNAME records) so Joe can send and receive replies from his mtsolutions.group address through his Gmail portal. smtp2go has no code-level integration with this repository — no API calls, no credentials, no site-side interaction.
+
 ## Analytics
 
 `analytics.js` uses GA4 `G-7DQS782PJN` and Microsoft Clarity `yjpn9hzcac` on the production homepage and selected-work page only. `privacy.html` provides preferences without tracking itself. Unlisted drafts and non-production hosts are excluded.
