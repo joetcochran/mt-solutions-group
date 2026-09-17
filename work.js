@@ -44,7 +44,7 @@
       panels[i].hidden = i !== index;
     });
     if (focus) tabs[index].focus();
-    if (updateHash) history.pushState(null, '', '#' + panels[index].id);
+    if (updateHash) { history.pushState(null, '', '#' + panels[index].id); window.mtAnalytics?.('case_select', panels[index].id); }
     // Visibility observer starts the illustration only once it enters view.
   }
   tabs.forEach((tab, index) => {

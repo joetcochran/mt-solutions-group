@@ -102,11 +102,13 @@ function setupWorksheet() {
     chat.hidden = true; form.hidden = true; result.hidden = false;
     document.querySelector('#step-counter').textContent = 'Brief ready';
     document.querySelector('#progress-bar').style.width = '100%'; title.focus();
+    window.mtAnalytics?.('brief_complete');
   }
   form.addEventListener('submit', event => {
     event.preventDefault();
     if (answers.length >= questions.length) return;
     const value = input.value.trim(); if (!value) return;
+    if (answers.length === 0) window.mtAnalytics?.('brief_start');
     answers.push(value); message(value, true); input.value = '';
     if (answers.length === questions.length) finish();
     else { message(questions[answers.length].prompt, false); showQuestion(); input.focus(); }
@@ -118,13 +120,13 @@ function setupWorksheet() {
     input.value = ''; showQuestion(); input.focus();
   });
   document.querySelector('#copy-brief').addEventListener('click', async () => {
-    try { await navigator.clipboard.writeText(brief); status.textContent = 'Brief copied. Paste it into a message to your manager or an email to Joe.'; }
+    try { await navigator.clipboard.writeText(brief); window.mtAnalytics?.('brief_copy'); status.textContent = 'Brief copied. Paste it into a message to your manager or an email to Joe.'; }
     catch { status.textContent = 'Copy is unavailable in this browser. Use Download brief to save a text version.'; }
   });
   document.querySelector('#download-brief').addEventListener('click', () => {
     const url = URL.createObjectURL(new Blob([brief], { type: 'text/plain;charset=utf-8' }));
     const link = document.createElement('a'); link.href = url; link.download = 'my-workflow-brief.txt';
-    document.body.append(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+    document.body.append(link); link.click(); window.mtAnalytics?.('brief_download'); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
     status.textContent = 'Download requested. You can share the text file with your manager or Joe.';
   });
   showQuestion();

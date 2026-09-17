@@ -483,3 +483,19 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--coral-dark); ou
  .case-contact { padding: 14px 20px; text-align: center; }
 }
 @media(prefers-reduced-motion: reduce) { .scene-step.is-current { transform: none; } .is-playing .is-current .scene-icon svg { animation: none; } }
+
+/* Optional analytics: equal-choice buttons, no modal blocking the page. */
+.analytics-choice { position: fixed; z-index: 1100; bottom: 16px; left: 16px; width: min(540px, calc(100% - 32px)); max-height: 85vh; overflow: auto; padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: var(--cream); color: var(--text); box-shadow: 0 8px 45px #102e2b30; }
+.analytics-choice[hidden] { display: none; }
+.analytics-choice h2 { font-size: 1.15rem; margin: 0 0 8px; }
+.analytics-choice p { font-size: .88rem; margin: 8px 0; }
+.analytics-choice a, .privacy-links a { text-decoration: underline; text-underline-offset: 3px; }
+.analytics-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+.analytics-actions button { background: white; color: var(--forest); border: 1px solid var(--forest); border-radius: 8px; padding: 10px 15px; cursor: pointer; }
+.analytics-actions button:disabled { opacity: .5; cursor: default; }
+.privacy-links { display: flex; flex-wrap: wrap; gap: 14px; font-size: .8rem; }
+.privacy-links button { color: inherit; background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
+.privacy-page { max-width: 800px; padding-block: 50px; }
+.privacy-page h1 { font: 500 3rem/1.1 Georgia, serif; }
+.privacy-page h2 { margin-top: 30px; font-size: 1.3rem; }
+.privacy-page a { text-decoration: underline; }
