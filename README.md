@@ -25,7 +25,7 @@ Never put model API keys, SMTP credentials, or client data in this public reposi
 
 `analytics.js` uses GA4 `G-7DQS782PJN` and Microsoft Clarity `yjpn9hzcac` on the production homepage and selected-work page only. `privacy.html` provides preferences without tracking itself. Unlisted drafts and non-production hosts are excluded.
 
-**Before deploying this integration:** turn Enhanced measurement OFF in GA4 Admin → Data streams → MT web stream. The Google-served tag still advertised automatic measurement during initial setup. Keep automatic form/outbound collection off: the worksheet's mailto link includes the user's brief. Custom events deliberately never include link URLs or user text.
+**Deployment check:** Enhanced measurement was verified OFF in the Google-served tag on September 17, 2026. Keep it OFF in GA4 Admin → Data streams → MT web stream. Keep automatic form/outbound collection off: the worksheet's mailto link includes the user's brief. Custom events deliberately never include link URLs or user text.
 
 - Basic consent: the Google tag is not requested until opt-in. No tracking requests are made after rejection; the site remains usable.
 - Footer Analytics preferences permits withdrawal. The Google disable flag and Clarity stop API stop collection; accessible provider cookies are removed. Consent preferences and GA cookies expire after 180 days; Clarity controls its cookie lifetimes.
