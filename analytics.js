@@ -1,8 +1,9 @@
-/* GA4 basic consent: no Google script or request before opt-in. */
+/* GA4 + Clarity: neither provider loads before opt-in. */
 (() => {
   'use strict';
   const ID = 'G-7DQS782PJN';
-  const KEY = 'mt-analytics-consent-v1';
+  const CLARITY = 'yjpn9hzcac';
+  const KEY = 'mt-analytics-consent-v2';
   const OWNER = 'mt-analytics-owner-excluded';
   const DAYS = 180;
   const routes = new Set(['/', '/index.html', '/selected-work.html']);
@@ -19,6 +20,8 @@
   const excluded = () => read(OWNER) === 'true' || navigator.globalPrivacyControl === true;
   let accepted = false;
   let started = false;
+  let clarityLoaded = false;
+  let clarityStopped = false;
   let previousFocus;
   window['ga-disable-' + ID] = true;
   const safeReferrer = () => {
@@ -34,9 +37,27 @@
     page_referrer: safeReferrer(),
     page_title: location.pathname === '/selected-work.html' ? 'Selected Work | MT Solutions Group' : 'MT Solutions Group'
   };
+  function startClarity() {
+    // Clarity observes the actual URL. Exclude query-bearing visits and private referrers.
+    if (location.search || (location.hash && !/^#(top|what-we-fix|selected-work|advisor|first-engagement|how-it-works|about|fleet-citations|field-services|multi-currency)$/.test(location.hash))) return;
+    try { const ref = new URL(document.referrer); if (ref.search || (hosts.has(ref.hostname) && !routes.has(ref.pathname))) return; } catch {}
+    if (clarityLoaded) {
+      if (clarityStopped) { window.clarity('start'); clarityStopped = false; }
+      window.clarity('consentv2', { analytics_Storage: 'granted', ad_Storage: 'denied' });
+      return;
+    }
+    clarityLoaded = true;
+    window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+    window.clarity('consentv2', { analytics_Storage: 'granted', ad_Storage: 'denied' });
+    const script = document.createElement('script'); script.async = true;
+    script.src = 'https://www.clarity.ms/tag/' + CLARITY;
+    script.referrerPolicy = 'no-referrer';
+    document.head.append(script);
+  }
   function start() {
     if (!accepted || excluded() || !routes.has(location.pathname)) return;
     window['ga-disable-' + ID] = false;
+    startClarity();
     if (started) { window.gtag('consent', 'update', { analytics_storage: 'granted' }); return; }
     started = true;
     window.dataLayer = window.dataLayer || [];
@@ -61,9 +82,14 @@
     accepted = false;
     // Google's supported opt-out flag blocks subsequent collection from this page.
     window['ga-disable-' + ID] = true;
+    if (clarityLoaded && !clarityStopped) {
+      window.clarity('consentv2', { analytics_Storage: 'denied', ad_Storage: 'denied' });
+      window.clarity('stop');
+      clarityStopped = true;
+    }
     for (const cookie of document.cookie.split(';')) {
       const name = cookie.trim().split('=')[0];
-      if (name !== '_ga' && name !== '_ga_7DQS782PJN') continue;
+      if (!['_ga', '_ga_7DQS782PJN', '_clck', '_clsk'].includes(name)) continue;
       for (const domain of ['', '; domain=mtsolutions.group', '; domain=www.mtsolutions.group']) {
         document.cookie = name + '=; Max-Age=0; path=/' + domain + '; SameSite=Lax; Secure';
       }
@@ -88,7 +114,7 @@
   const panel = document.createElement('section');
   panel.className = 'analytics-choice'; panel.hidden = true;
   panel.setAttribute('aria-labelledby', 'analytics-choice-title');
-  panel.innerHTML = '<h2 id="analytics-choice-title">May we measure what’s useful?</h2><p>Optional Google Analytics cookies help us understand visits and which features people use. We don’t send your worksheet answers. The site works either way. <a href="privacy.html">Privacy details</a></p><p class="analytics-current" role="status"></p><div class="analytics-actions"><button type="button" data-choice="accepted">Allow analytics</button><button type="button" data-choice="declined">No thanks</button><button type="button" data-close hidden>Close</button></div>';
+  panel.innerHTML = '<h2 id="analytics-choice-title">May we measure what’s useful?</h2><p>Optional Google Analytics and Microsoft Clarity use cookies to measure visits, clicks and scrolling. Clarity provides heatmaps and session replays, with worksheet content masked. The site works either way. <a href="privacy.html">Privacy details</a></p><p class="analytics-current" role="status"></p><div class="analytics-actions"><button type="button" data-choice="accepted">Allow analytics</button><button type="button" data-choice="declined">No thanks</button><button type="button" data-close hidden>Close</button></div>';
   document.body.append(panel);
   const buttons = [...document.querySelectorAll('[data-analytics-settings]')];
   function show(focus) {

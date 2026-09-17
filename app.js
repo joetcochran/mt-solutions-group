@@ -98,7 +98,7 @@ function setupWorksheet() {
       details.append(dt, dd);
     });
     brief = 'An improvement worth discussing\nMT Solutions Group\n\n' + fields.map(([label, text]) => `${label}\n${text}`).join('\n\n') + '\n\nSuggested next step: discuss one scoped pilot with Joe Cochran. The first small engagement includes up to 12 hours of Joe’s time at no charge. Additional work and any third-party costs are agreed beforehand.\n\nThis guided worksheet is not a feasibility assessment or a promise of savings.\njoe@mtsolutions.group\nhttps://mtsolutions.group/';
-    document.querySelector('#email-brief').href = `mailto:joe@mtsolutions.group?subject=${encodeURIComponent('Let’s discuss this workflow')}&body=${encodeURIComponent(brief)}`;
+    // Keep user text out of DOM attributes observed by analytics/replay tools.
     chat.hidden = true; form.hidden = true; result.hidden = false;
     document.querySelector('#step-counter').textContent = 'Brief ready';
     document.querySelector('#progress-bar').style.width = '100%'; title.focus();
@@ -112,6 +112,11 @@ function setupWorksheet() {
     answers.push(value); message(value, true); input.value = '';
     if (answers.length === questions.length) finish();
     else { message(questions[answers.length].prompt, false); showQuestion(); input.focus(); }
+  });
+  document.querySelector('#email-brief').addEventListener('click', event => {
+    event.preventDefault();
+    // Open the mail app directly; never put the private brief into a link attribute.
+    location.href = `mailto:joe@mtsolutions.group?subject=${encodeURIComponent('Let’s discuss this workflow')}&body=${encodeURIComponent(brief)}`;
   });
   document.querySelector('#restart-advisor').addEventListener('click', () => {
     answers.length = 0; brief = ''; status.textContent = '';
