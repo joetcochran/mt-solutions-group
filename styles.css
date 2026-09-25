@@ -156,7 +156,7 @@ button { color: inherit; }
   transform: translateX(-50%) translateY(6px);
   transition: opacity .18s ease, transform .18s ease, visibility .18s;
 }
-.proof-tooltip img { display: block; width: 100%; }
+.proof-tooltip img { display: block; width: 100%; height: auto; }
 .proof-tooltip-caption { margin: 0; padding: 14px 18px 18px; font-size: .78rem; line-height: 1.55; color: #687b77; }
 .proof-tooltip-caption strong { color: var(--ink-deep); }
 .engine-proof:has(.proof-trigger:hover) .proof-tooltip,
