@@ -169,6 +169,12 @@ button { color: inherit; }
 .engine-chat-tooltip.is-open {
   opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, calc(-100% - 16px)) translateY(0);
 }
+.hero-visual:has(.engine-chat-trigger:hover),
+.hero-visual:has(.engine-chat-trigger:focus-visible),
+.hero-visual:has(.engine-chat-tooltip:hover),
+.hero-visual:has(.engine-chat-tooltip.is-open) {
+  z-index: 300;
+}
 .window-bar {
   display: flex; align-items: center; gap: 7px; height: 62px;
   margin-inline: -26px; padding-inline: 24px; border-bottom: 1px solid #e8ece9;
