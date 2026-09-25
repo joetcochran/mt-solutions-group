@@ -475,9 +475,10 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--coral-dark); ou
 .transcript-line { display: grid; grid-template-columns: 92px 1fr; gap: 20px; padding: 15px 0; border-bottom: 1px solid rgba(22, 68, 62, .07); }
 .transcript-line:last-of-type { border-bottom: 0; }
 .transcript-line b { padding-top: 3px; font-size: .66rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
-.transcript-line.is-you b { color: var(--forest); }
+.transcript-line.is-user b { color: var(--forest); }
 .transcript-line.is-engine b { color: var(--coral-dark); }
 .transcript-line p { grid-column: 2; margin: 0; color: var(--text); font-size: .96rem; line-height: 1.65; }
+.transcript-line.is-engine p { font-family: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: .89rem; line-height: 1.6; }
 .transcript-line p + p { margin-top: 10px; }
 .transcript-divider { display: flex; align-items: center; gap: 14px; margin: 28px 0 4px; color: #9fada8; font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
 .transcript-divider::before, .transcript-divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
