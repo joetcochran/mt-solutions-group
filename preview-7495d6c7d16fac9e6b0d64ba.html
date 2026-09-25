@@ -141,7 +141,7 @@
 <button type="submit" class="button button-primary">Book an intro conversation →</button>
 </form>
 <p id="coach-status" role="status" class="trial-status"></p>
-<p class="handoff-note">Opens a draft in your mail app; nothing is sent until you send it. No mail app? Email <a href="mailto:joe@mtsolutions.group">joe@mtsolutions.group</a> directly.</p>
+<p class="handoff-note">Sent straight to Joe. If that fails for any reason, it opens a draft in your mail app instead — nothing is lost.</p>
 </section>
 
 <section class="trial-panel" id="questionnaire-panel" hidden aria-labelledby="q-heading">
@@ -257,9 +257,9 @@
 <div class="brief-actions">
 <button id="q-copy" class="button button-primary" type="button">Copy for myself</button>
 <button id="q-download" class="button button-secondary" type="button">Download brief</button>
-<a id="q-email" class="button button-secondary" href="mailto:joe@mtsolutions.group">Email this to Joe →</a>
+<a id="q-email" class="button button-secondary" href="mailto:joe@mtsolutions.group">Send to Joe →</a>
 </div>
-<p class="handoff-note">Email opens a draft in your mail app; nothing is sent until you send it. No mail app? Copy or download the brief and send it to <a href="mailto:joe@mtsolutions.group">joe@mtsolutions.group</a>.</p>
+<p class="handoff-note">Sent straight to Joe. If that fails for any reason, it opens a draft in your mail app instead — nothing is lost. You can also copy or download the brief for yourself.</p>
 <p id="q-status" role="status" class="trial-status"></p>
 <button id="q-restart" class="restart-button" type="button">↻ Start over</button>
 </section>
@@ -277,6 +277,19 @@
 
 <script>
 document.querySelector('#trial-year').textContent = new Date().getFullYear();
+
+// --- Web3Forms: direct send, with mailto as an automatic fallback ---
+const WEB3FORMS_ACCESS_KEY = '46ff98e7-5ae3-4877-bbbd-da8c2a712dd6';
+async function sendToWeb3Forms({ subject, message }) {
+  const res = await fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({ access_key: WEB3FORMS_ACCESS_KEY, subject, message, from_name: 'MT Solutions Group site' }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || data.success === false) throw new Error(data.message || 'Web3Forms submission failed');
+  return data;
+}
 
 // --- Fork: choose a path, or go back to the choice ---
 (() => {
@@ -310,7 +323,7 @@ document.querySelector('#trial-year').textContent = new Date().getFullYear();
 (() => {
   const form = document.querySelector('#coach-form');
   const status = document.querySelector('#coach-status');
-  form.addEventListener('submit', event => {
+  form.addEventListener('submit', async event => {
     event.preventDefault();
     const q1 = document.querySelector('#coach-q1').value.trim();
     const q2 = document.querySelector('#coach-q2').value.trim();
@@ -319,8 +332,15 @@ document.querySelector('#trial-year').textContent = new Date().getFullYear();
     lines.push('Where the week gets tedious or error-prone:', q2 || '(not answered yet)', '');
     lines.push('Sent from the MT Solutions Group 30-day trial page.');
     const body = lines.join('\n');
-    status.textContent = 'Opening your mail app…';
-    location.href = `mailto:joe@mtsolutions.group?subject=${encodeURIComponent("Let's find the right first project")}&body=${encodeURIComponent(body)}`;
+    const subject = "Let's find the right first project";
+    status.textContent = 'Sending…';
+    try {
+      await sendToWeb3Forms({ subject, message: body });
+      status.textContent = 'Sent — Joe will follow up soon.';
+    } catch (err) {
+      status.textContent = "Couldn't send automatically, opening your mail app instead…";
+      location.href = `mailto:joe@mtsolutions.group?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
   });
 })();
 
@@ -454,9 +474,18 @@ window.mtInitQuestionnaire = (() => {
       document.querySelector('#q-email').href = `mailto:joe@mtsolutions.group?subject=${encodeURIComponent('30-day trial: ' + (painPoint || 'a workflow to discuss'))}`;
     }
 
-    document.querySelector('#q-email').addEventListener('click', event => {
+    document.querySelector('#q-email').addEventListener('click', async event => {
       event.preventDefault();
-      location.href = `mailto:joe@mtsolutions.group?subject=${encodeURIComponent('30-day trial: ' + (radioAnswer('painPoint', 'painPoint-other') || 'a workflow to discuss'))}&body=${encodeURIComponent(brief)}`;
+      const subject = '30-day trial: ' + (radioAnswer('painPoint', 'painPoint-other') || 'a workflow to discuss');
+      const status = document.querySelector('#q-status');
+      status.textContent = 'Sending…';
+      try {
+        await sendToWeb3Forms({ subject, message: brief });
+        status.textContent = 'Sent — Joe will follow up soon. You can still copy or download this brief for yourself below.';
+      } catch (err) {
+        status.textContent = "Couldn't send automatically, opening your mail app instead…";
+        location.href = `mailto:joe@mtsolutions.group?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(brief)}`;
+      }
     });
     document.querySelector('#q-copy').addEventListener('click', async () => {
       const status = document.querySelector('#q-status');
