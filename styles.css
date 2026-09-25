@@ -106,7 +106,7 @@ button { color: inherit; }
 .text-link span { margin-left: 6px; color: var(--coral); }
 .microcopy { margin: 17px 0 0 5px; color: #84938f; font-size: .8rem; }
 
-.hero-visual { position: relative; min-width: 0; isolation: isolate; }
+.hero-visual { position: relative; z-index: 150; min-width: 0; isolation: isolate; }
 .visual-glow {
   position: absolute; z-index: -2; inset: -18% -10%;
   background: radial-gradient(circle at center, rgba(185, 223, 206, .7), rgba(185, 223, 206, 0) 66%);
@@ -123,12 +123,13 @@ button { color: inherit; }
 .engine-node img { width: 52%; height: 52%; object-fit: contain; }
 .engine-more {
   position: absolute; left: var(--nx); top: var(--ny); transform: translate(-50%, -50%);
-  margin: 0; color: #9fada8; font-size: clamp(.52rem, 1.1vw, .66rem); font-weight: 700;
+  margin: 0; color: var(--forest); font-size: clamp(.52rem, 1.1vw, .66rem); font-weight: 800;
   letter-spacing: .02em; white-space: nowrap;
 }
 .engine-hub-label {
   position: absolute; left: var(--nx); top: var(--ny); transform: translate(-50%, -50%);
-  width: 21%; aspect-ratio: 1.28; display: grid; place-items: center; text-align: center;
+  width: 20%; aspect-ratio: 1.28; padding: 2.5%; box-sizing: border-box;
+  display: grid; place-items: center; text-align: center;
   background: #195949; border-radius: 14%; box-shadow: 0 10px 24px rgba(10, 40, 34, .35);
 }
 .engine-hub-label b { color: #fff; font-size: clamp(.62rem, 1.55vw, .95rem); font-weight: 800; line-height: 1.25; }
