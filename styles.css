@@ -414,7 +414,10 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--coral-dark); ou
 @media (max-width: 680px) { .case-columns, .case-flow { grid-template-columns: 1fr; gap: 18px; } .workflow-example { padding: 20px; } .selected-work-page { padding-top: 45px; } .work-card { padding: 28px; } .brief-actions .button { width: 100%; } .step-counter { flex-shrink: 0; } .engagement-card .button { height: auto; padding-block: 14px; text-align: center; } }
 @media (prefers-reduced-motion: reduce) { .will-reveal:not(.visible) { opacity: 1; transform: none; } }
 @media (max-width: 680px) { .visual-glow { inset-inline: 0; } }
-@media (min-width: 981px) { .hero h1 { font-size: clamp(3.3rem, 4.7vw, 4.25rem); } }
+@media (min-width: 981px) {
+  .hero h1 { position: relative; z-index: 160; width: max-content; white-space: nowrap; font-size: clamp(3.3rem, 4.7vw, 4.25rem); }
+  .hero-title-break { display: none; }
+}
 
 /* Visual selected-work stories: native, responsive, no external animation service. */
 .selected-work-page { padding-top: 50px; }
