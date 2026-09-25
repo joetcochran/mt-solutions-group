@@ -1,9 +1,6 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow, noarchive"><meta name="referrer" content="no-referrer"><title>30-Day Risk-Free AI Trial — Draft | MT Solutions Group</title><meta name="description" content="A 30-day risk-free AI trial from MT Solutions Group: find your first project, or bring the one you already have, and see it working before you commit."><link rel="stylesheet" href="styles.css">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>30-Day Risk-Free AI Trial | MT Solutions Group</title><meta name="description" content="A 30-day risk-free AI trial from MT Solutions Group: find your first project, or bring the one you already have, and see it working before you commit."><link rel="stylesheet" href="styles.css"><script src="analytics.js" defer></script><script src="app.js" defer></script>
 <style>
-.draft-bar{padding:10px 24px;text-align:center;background:#102e2b;color:#e3eee8;font-size:.76rem}.draft-bar strong{color:#f2c978}
-.trial-header{display:flex;justify-content:space-between;align-items:center;padding-block:24px;gap:20px;flex-wrap:wrap}
-.trial-header a.text-link{font-size:.85rem}
 .trial-main{padding-bottom:80px}
 
 .trial-hero{padding:56px 0 40px;max-width:800px}
@@ -41,6 +38,7 @@
 .trial-back{margin-bottom:22px;padding:0;border:0;background:none;color:var(--ink);font-weight:750;font-size:.85rem;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
 .trial-panel h2{font:500 clamp(1.9rem,3.3vw,2.6rem)/1.15 Georgia,serif;letter-spacing:-.03em;color:var(--ink-deep);margin:0 0 14px}
 .trial-panel > p{color:var(--muted);max-width:640px;margin:0 0 28px}
+.q-topbar{display:flex;align-items:center;justify-content:space-between;padding:0 0 16px}
 [tabindex="-1"]:focus{outline:2px solid var(--forest-bright);outline-offset:4px}
 
 .trial-field{margin-bottom:24px}
@@ -80,9 +78,6 @@
 .trial-nav{display:flex;justify-content:space-between;gap:12px;margin-top:12px}
 .trial-nav .button{min-height:48px}
 
-.trial-footer{padding:34px 0 10px;color:#84938f;font-size:.8rem;border-top:1px solid var(--line);margin-top:20px}
-.trial-footer a{text-decoration:underline;text-underline-offset:4px;color:inherit}
-
 @media(max-width:760px){
 .trial-fork-grid{grid-template-columns:1fr}
 .trial-choice-grid{grid-template-columns:repeat(2,1fr)}
@@ -95,11 +90,30 @@
 }
 </style></head><body>
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="draft-bar"><strong>Joe's review draft</strong> · Unlisted, not password-protected · No link from the public navigation</div>
-<header class="trial-header section-shell">
-<a class="brand" href="index.html" aria-label="MT Solutions Group home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48" role="img"><path d="M8 34V14l16 14 16-14v20"/><path d="M15 34V25m18 9v-9"/></svg></span><span class="brand-name">MT <strong>Solutions Group</strong></span></a>
-<a class="text-link" href="index.html">Back to the homepage</a>
-</header>
+
+    <header class="site-header">
+      <a class="brand" href="index.html#top" aria-label="MT Solutions Group home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" role="img">
+            <path d="M8 34V14l16 14 16-14v20" />
+            <path d="M15 34V25m18 9v-9" />
+          </svg>
+        </span>
+        <span class="brand-name">MT <strong>Solutions Group</strong></span>
+      </a>
+
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span><span></span>
+        <span class="sr-only">Open menu</span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <a href="index.html#what-we-fix">What we fix</a>
+        <a href="selected-work.html">Selected work</a>
+        <a href="index.html#about">Why MT</a>
+        <a class="nav-cta" href="get-started.html#fork">Start your free trial</a>
+      </nav>
+    </header>
 
 <main id="main" class="section-shell trial-main">
 
@@ -130,7 +144,7 @@
 </div>
 </section>
 
-<section class="trial-panel" id="coach-panel" hidden aria-labelledby="coach-heading">
+<section class="trial-panel" id="coach-panel" hidden aria-labelledby="coach-heading" data-clarity-mask="True">
 <button type="button" class="trial-back" data-back>← Choose a different path</button>
 <p class="eyebrow"><span></span> A co-innovation partner, not a pitch</p>
 <h2 id="coach-heading" tabindex="-1">Let's find your first project together.</h2>
@@ -144,9 +158,9 @@
 <p class="handoff-note">Sent straight to Joe. If that fails for any reason, it opens a draft in your mail app instead — nothing is lost.</p>
 </section>
 
-<section class="trial-panel" id="questionnaire-panel" hidden aria-labelledby="q-heading">
+<section class="trial-panel" id="questionnaire-panel" hidden aria-labelledby="q-heading" data-clarity-mask="True">
 <button type="button" class="trial-back" data-back>← Choose a different path</button>
-<div class="advisor-topbar" style="padding:0 0 16px"><p class="eyebrow" style="margin:0"><span></span> Let's scope your 30 days</p><span id="q-step-counter" class="step-counter">Step 1 of 6</span></div>
+<div class="q-topbar"><p class="eyebrow" style="margin:0"><span></span> Let's scope your 30 days</p><span id="q-step-counter" class="step-counter">Step 1 of 6</span></div>
 <div class="progress-track"><span id="q-progress-bar"></span></div>
 <h2 id="q-heading" tabindex="-1" style="margin-top:22px">A few questions before we workshop.</h2>
 
@@ -273,11 +287,20 @@
 </section>
 
 </main>
-<footer class="trial-footer section-shell">Draft for Joe's review · MT Solutions Group · <a href="mailto:joe@mtsolutions.group">joe@mtsolutions.group</a> · <span id="trial-year"></span></footer>
+
+    <footer class="site-footer">
+      <a class="brand brand-footer" href="index.html#top">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M8 34V14l16 14 16-14v20"/><path d="M15 34V25m18 9v-9"/></svg>
+        </span>
+        <span class="brand-name">MT <strong>Solutions Group</strong></span>
+      </a>
+      <div class="footer-contact"><p>Practical AI for small and midsize businesses.</p><a href="mailto:joe@mtsolutions.group">joe@mtsolutions.group</a></div>
+      <div class="privacy-links"><a href="privacy.html">Privacy</a><button type="button" data-analytics-settings hidden>Analytics preferences</button></div>
+      <p class="copyright">© <span id="year"></span> MT Solutions Group.</p>
+    </footer>
 
 <script>
-document.querySelector('#trial-year').textContent = new Date().getFullYear();
-
 // --- Web3Forms: direct send, with mailto as an automatic fallback ---
 const WEB3FORMS_ACCESS_KEY = '46ff98e7-5ae3-4877-bbbd-da8c2a712dd6';
 async function sendToWeb3Forms({ subject, message }) {

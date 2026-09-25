@@ -6,7 +6,7 @@
   const KEY = 'mt-analytics-consent-v2';
   const OWNER = 'mt-analytics-owner-excluded';
   const DAYS = 180;
-  const routes = new Set(['/', '/index.html', '/selected-work.html']);
+  const routes = new Set(['/', '/index.html', '/selected-work.html', '/get-started.html']);
   const hosts = new Set(['mtsolutions.group', 'www.mtsolutions.group']);
   if (!hosts.has(location.hostname) || (!routes.has(location.pathname) && location.pathname !== '/privacy.html')) return;
   const read = key => { try { return localStorage.getItem(key); } catch { return null; } };
@@ -32,14 +32,15 @@
       return u.origin + '/';
     } catch { return ''; }
   };
+  const titles = { '/selected-work.html': 'Selected Work | MT Solutions Group', '/get-started.html': '30-Day Risk-Free AI Trial | MT Solutions Group' };
   const page = {
     page_location: location.origin + location.pathname,
     page_referrer: safeReferrer(),
-    page_title: location.pathname === '/selected-work.html' ? 'Selected Work | MT Solutions Group' : 'MT Solutions Group'
+    page_title: titles[location.pathname] || 'MT Solutions Group'
   };
   function startClarity() {
     // Clarity observes the actual URL. Exclude query-bearing visits and private referrers.
-    if (location.search || (location.hash && !/^#(top|what-we-fix|selected-work|advisor|first-engagement|how-it-works|about|fleet-citations|field-services|multi-currency)$/.test(location.hash))) return;
+    if (location.search || (location.hash && !/^#(top|what-we-fix|selected-work|fork|first-engagement|how-it-works|about|fleet-citations|field-services|multi-currency)$/.test(location.hash))) return;
     try { const ref = new URL(document.referrer); if (ref.search || (hosts.has(ref.hostname) && !routes.has(ref.pathname))) return; } catch {}
     if (clarityLoaded) {
       if (clarityStopped) { window.clarity('start'); clarityStopped = false; }
@@ -96,25 +97,25 @@
     }
   }
   // A narrow event API: all values are fixed labels, never user-entered text.
-  const simple = new Set(['brief_start', 'brief_complete', 'brief_copy', 'brief_download', 'linkedin_click']);
+  const simple = new Set(['linkedin_click']);
   const cases = new Set(['fleet-citations', 'field-services', 'multi-currency']);
   window.mtAnalytics = (event, label) => {
     if (!accepted || excluded() || !started) return;
     const params = { ...page, send_to: ID };
     if (event === 'case_select' && cases.has(label)) params.case_id = label;
-    else if (event === 'contact_click' && ['worksheet', 'case_study', 'footer', 'page'].includes(label)) params.placement = label;
+    else if (event === 'contact_click' && ['case_study', 'footer', 'page'].includes(label)) params.placement = label;
     else if (!simple.has(event)) return;
     window.gtag('event', event, params);
   };
   document.addEventListener('click', event => {
     const link = event.target.closest('a'); if (!link) return;
-    if (link.protocol === 'mailto:') window.mtAnalytics('contact_click', link.id === 'email-brief' ? 'worksheet' : link.closest('.case-study') ? 'case_study' : link.closest('footer') ? 'footer' : 'page');
+    if (link.protocol === 'mailto:') window.mtAnalytics('contact_click', link.closest('.case-study') ? 'case_study' : link.closest('footer') ? 'footer' : 'page');
     else if (link.hostname === 'www.linkedin.com') window.mtAnalytics('linkedin_click');
   });
   const panel = document.createElement('section');
   panel.className = 'analytics-choice'; panel.hidden = true;
   panel.setAttribute('aria-labelledby', 'analytics-choice-title');
-  panel.innerHTML = '<h2 id="analytics-choice-title">May we measure what’s useful?</h2><p>Optional Google Analytics and Microsoft Clarity use cookies to measure visits, clicks and scrolling. Clarity provides heatmaps and session replays, with worksheet content masked. The site works either way. <a href="privacy.html">Privacy details</a></p><p class="analytics-current" role="status"></p><div class="analytics-actions"><button type="button" data-choice="accepted">Allow analytics</button><button type="button" data-choice="declined">No thanks</button><button type="button" data-close hidden>Close</button></div>';
+  panel.innerHTML = '<h2 id="analytics-choice-title">May we measure what’s useful?</h2><p>Optional Google Analytics and Microsoft Clarity use cookies to measure visits, clicks and scrolling. Clarity provides heatmaps and session replays, with get-started page answers masked. The site works either way. <a href="privacy.html">Privacy details</a></p><p class="analytics-current" role="status"></p><div class="analytics-actions"><button type="button" data-choice="accepted">Allow analytics</button><button type="button" data-choice="declined">No thanks</button><button type="button" data-close hidden>Close</button></div>';
   document.body.append(panel);
   const buttons = [...document.querySelectorAll('[data-analytics-settings]')];
   function show(focus) {
