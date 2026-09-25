@@ -11,23 +11,24 @@ nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => 
   menuButton.setAttribute('aria-expanded', 'false');
 }));
 document.querySelector('#year').textContent = new Date().getFullYear();
-// Dogfooding proof tooltip: hover works via CSS; this adds tap support for touch devices.
-const proofTrigger = document.querySelector('.proof-trigger');
-const proofTooltip = document.querySelector('.proof-tooltip');
-if (proofTrigger && proofTooltip) {
-  proofTrigger.addEventListener('click', (event) => {
+// Hover tooltips: CSS handles hover; this adds tap support for touch devices.
+function wireTapTooltip(trigger, tooltip) {
+  if (!trigger || !tooltip) return;
+  trigger.addEventListener('click', (event) => {
     event.stopPropagation();
-    proofTooltip.classList.toggle('is-open');
+    tooltip.classList.toggle('is-open');
   });
   document.addEventListener('click', (event) => {
-    if (!proofTooltip.contains(event.target) && event.target !== proofTrigger) {
-      proofTooltip.classList.remove('is-open');
+    if (!tooltip.contains(event.target) && event.target !== trigger) {
+      tooltip.classList.remove('is-open');
     }
   });
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') proofTooltip.classList.remove('is-open');
+    if (event.key === 'Escape') tooltip.classList.remove('is-open');
   });
 }
+wireTapTooltip(document.querySelector('.proof-trigger'), document.querySelector('.proof-tooltip'));
+wireTapTooltip(document.querySelector('.engine-chat-trigger'), document.querySelector('.engine-chat-tooltip'));
 // Keep content accessible without animation support or JavaScript.
 if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver(entries => entries.forEach(entry => {
