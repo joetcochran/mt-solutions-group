@@ -225,14 +225,6 @@ button { color: inherit; }
 .section-heading .eyebrow { grid-column: 1 / -1; }
 .section-heading h2 { font-size: clamp(2.65rem, 4.5vw, 4.4rem); }
 .section-heading > p:last-child { max-width: 450px; margin: 0 0 5px; color: var(--muted); font-size: 1.08rem; }
-.service-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-.service-card { position: relative; min-height: 310px; padding: 42px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; transition: background .25s, transform .25s; }
-.service-card:hover { z-index: 2; background: var(--mint-pale); transform: translateY(-4px); }
-.service-icon { display: grid; place-items: center; width: 55px; height: 55px; margin-bottom: 36px; color: var(--ink); background: var(--mint-pale); border-radius: 16px; font-size: 1.7rem; }
-.service-card:hover .service-icon { background: white; }
-.card-number { position: absolute; right: 36px; top: 28px; color: #b7c2bf; font-family: Georgia, serif; }
-.service-card h3 { margin: 0 0 10px; color: var(--ink-deep); font-family: Georgia, serif; font-size: 1.6rem; letter-spacing: -.025em; }
-.service-card > p:not(.card-number) { max-width: 430px; margin: 0 0 26px; color: var(--muted); }
 .card-link { color: var(--ink); font-size: .82rem; font-weight: 750; }
 .card-link b { margin-left: 5px; color: var(--coral); }
 
@@ -325,8 +317,6 @@ button { color: inherit; }
   .trust-strip > div, .trust-strip > div:first-child { padding: 16px 0; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.13); }
   .trust-strip > div:last-child { border: 0; }
   .section-heading h2 { font-size: clamp(2.5rem, 11vw, 3.4rem); }
-  .service-grid { grid-template-columns: 1fr; }
-  .service-card { min-height: 285px; padding: 34px 28px; }
   .result-grid, .lead-fields { grid-template-columns: 1fr; }
   .process-step { grid-template-columns: 52px 1fr; padding-block: 32px; }
   .process-step > div { grid-template-columns: 1fr; gap: 5px; }
