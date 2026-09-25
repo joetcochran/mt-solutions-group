@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Personal Projects | MT Solutions Group</title><meta name="description" content="Projects Joe Cochran has used his own AI Empowerment Engine for, outside of client work." />
+<link rel="stylesheet" href="styles.css" /><script src="app.js" defer></script>
+<style>
+.pp-page{padding-block:70px 100px}
+.pp-intro{max-width:780px}
+.pp-intro h1{font:500 clamp(2.6rem,5vw,4.4rem)/1.1 Georgia,serif;letter-spacing:-.045em;margin:0 0 22px;color:var(--ink-deep)}
+.pp-intro h1 em{color:var(--coral-dark);font-style:normal}
+.pp-intro p{max-width:680px;font-size:1.08rem;line-height:1.65;color:#536b66;margin:0}
+.pp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:52px}
+.pp-card{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.pp-art{height:200px;background:var(--mint-pale);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pp-art img{width:100%;height:100%;object-fit:cover}
+.pp-art.pp-art-icon{background:var(--forest)}
+.pp-art-icon svg{width:52px;height:52px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.pp-art.pp-art-stub{background:repeating-linear-gradient(135deg,#f2f5f3,#f2f5f3 10px,#e9efeb 10px,#e9efeb 20px)}
+.pp-copy{padding:26px 28px 28px;display:flex;flex-direction:column;gap:10px;flex:1}
+.pp-copy .eyebrow{font-size:.66rem;margin:0}
+.pp-copy h2{font:500 1.45rem/1.2 Georgia,serif;letter-spacing:-.02em;margin:0;color:var(--ink-deep)}
+.pp-copy p{margin:0;color:#536b66;font-size:.94rem;line-height:1.55;flex:1}
+.pp-links{display:flex;flex-wrap:wrap;gap:14px;margin-top:4px}
+.pp-links a{font-size:.86rem;font-weight:750;color:var(--ink);border-bottom:1px solid var(--mint)}
+.pp-stub-note{color:#9fada8;font-size:.82rem;font-style:italic}
+.pp-cta{padding-block:64px 10px}
+.pp-cta .button{margin-top:6px}
+@media(max-width:760px){
+.pp-grid{grid-template-columns:1fr}
+}
+</style></head><body>
+<a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="index.html#top" aria-label="MT Solutions Group home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" role="img">
+            <path d="M8 34V14l16 14 16-14v20" />
+            <path d="M15 34V25m18 9v-9" />
+          </svg>
+        </span>
+        <span class="brand-name">MT <strong>Solutions Group</strong></span>
+      </a>
+
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span><span></span>
+        <span class="sr-only">Open menu</span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <a href="index.html#what-we-fix">What I help fix</a>
+        <a href="selected-work.html">Selected work</a>
+        <a href="empowerment-engine.html">The Engine</a>
+        <a href="project-ideas.html">Project ideas</a>
+        <a href="index.html#about">Why MT</a>
+        <a class="nav-cta" href="get-started.html#fork">Start your free trial</a>
+      </nav>
+    </header>
+
+<main id="main" class="section-shell pp-page">
+
+<div class="pp-intro"><p class="eyebrow"><span></span> Outside of client work</p>
+<h1>Projects I've used my own<br /><em>AI Empowerment Engine</em> for.</h1>
+<p>Not client work—my own curiosity, built with the same Engine I put in your hands. A short list, growing as I make time for it.</p>
+</div>
+
+<div class="pp-grid">
+
+<article class="pp-card">
+  <div class="pp-art"><img src="assets/planetfall-portrait.jpg" alt="Illustrated space explorer in a red helmet and green suit against a starry sky" loading="lazy" /></div>
+  <div class="pp-copy">
+    <p class="eyebrow"><span></span> Games</p>
+    <h2>Planetfall</h2>
+    <p>A browser port of the classic Infocom text adventure, rebuilt with AI agents doing the heavy lifting on iteration and testing.</p>
+    <div class="pp-links"><a href="https://joetcochran.github.io/planetfall-site/" target="_blank" rel="noopener noreferrer">Explore Planetfall <span aria-hidden="true">↗</span></a></div>
+  </div>
+</article>
+
+<article class="pp-card">
+  <div class="pp-art"><img src="assets/joylite-composite.png" alt="JoyLite maze game in a purple enclosure with an illuminated blue maze and an Atari joystick" loading="lazy" /></div>
+  <div class="pp-copy">
+    <p class="eyebrow"><span></span> Electronics</p>
+    <h2>JoyLite</h2>
+    <p>An Arduino-based maze game with an Atari joystick controller—recently reworked with AI to fit roughly 7x more maze onto the same hardware.</p>
+    <div class="pp-links"><a href="https://sites.google.com/site/joetcochran/joylite-maze/2026-updates" target="_blank" rel="noopener noreferrer">Read the JoyLite update <span aria-hidden="true">↗</span></a></div>
+  </div>
+</article>
+
+<article class="pp-card">
+  <div class="pp-art pp-art-icon"><svg viewBox="0 0 48 48"><path d="M8 34V14l16 14 16-14v20" /><path d="M15 34V25m18 9v-9" /></svg></div>
+  <div class="pp-copy">
+    <p class="eyebrow"><span></span> Personal dashboard</p>
+    <h2>My daily dashboard</h2>
+    <p>Tracks my investment portfolio and CGM glucose readings and ties into my Apple Calendar—built, and still growing, entirely with my own Engine.</p>
+    <div class="pp-links"><a href="https://portfolio.rufferto.ai/" target="_blank" rel="noopener noreferrer">Open the dashboard <span aria-hidden="true">↗</span></a></div>
+  </div>
+</article>
+
+<article class="pp-card">
+  <div class="pp-art pp-art-stub"></div>
+  <div class="pp-copy">
+    <p class="eyebrow"><span></span> Coming soon</p>
+    <h2>Eyeballs</h2>
+    <p class="pp-stub-note">Details coming soon.</p>
+  </div>
+</article>
+
+</div>
+
+<section class="pp-cta" aria-labelledby="pp-cta-heading">
+<h2 id="pp-cta-heading">This is the same Engine I'd put in your hands.</h2>
+<p>If a business version of this—built around your work, not mine—sounds useful, let's talk.</p>
+<a class="button button-primary" href="get-started.html#fork">Start your free trial <span aria-hidden="true">→</span></a>
+</section>
+
+</main>
+
+    <footer class="site-footer">
+      <a class="brand brand-footer" href="index.html#top">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M8 34V14l16 14 16-14v20"/><path d="M15 34V25m18 9v-9"/></svg>
+        </span>
+        <span class="brand-name">MT <strong>Solutions Group</strong></span>
+      </a>
+      <div class="footer-contact"><p>Practical AI for small and midsize businesses.</p><a href="mailto:joe@mtsolutions.group">joe@mtsolutions.group</a></div>
+      <div class="privacy-links"><a href="privacy.html">Privacy</a><button type="button" data-analytics-settings hidden>Analytics preferences</button></div>
+      <p class="copyright">© <span id="year"></span> MT Solutions Group.</p>
+      <p class="footer-legal">MT Solutions Group is an independent setup and support service. It uses OpenClaw, open-source software licensed under the MIT License. OpenClaw © 2026 OpenClaw Foundation. MT Solutions Group is not affiliated with or endorsed by the OpenClaw Foundation. <a href="https://github.com/openclaw/openclaw/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">OpenClaw license <span aria-hidden="true">↗</span></a></p>
+    </footer>
+</body></html>
