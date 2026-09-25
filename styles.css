@@ -133,6 +133,16 @@ button { color: inherit; }
 .connector-strip ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .connector-strip li { padding: 5px 11px; background: white; border: 1px solid rgba(22,68,62,.14); border-radius: 999px; font-size: .7rem; font-weight: 700; color: var(--ink); }
 .connector-strip li:last-child { color: var(--coral-dark); border-color: rgba(217,100,67,.35); background: transparent; }
+.engine-proof {
+  display: grid; grid-template-columns: auto 1fr; gap: 11px; align-items: start;
+  width: calc(100% - 38px); margin: 22px auto 0; padding: 14px 17px;
+  color: #536b66; background: rgba(255, 253, 248, .88); border: 1px solid rgba(22, 68, 62, .12);
+  border-radius: 16px; box-shadow: 0 14px 34px rgba(16, 46, 43, .08); backdrop-filter: blur(8px);
+}
+.engine-proof-mark { display: grid; place-items: center; width: 23px; height: 23px; color: white; background: var(--coral); border-radius: 50%; font-size: .74rem; font-weight: 800; }
+.engine-proof p { margin: 1px 0 0; font-size: .77rem; line-height: 1.55; }
+.engine-proof strong { color: var(--ink-deep); }
+.engine-proof em { color: var(--coral-dark); font-style: normal; font-weight: 750; }
 .trust-strip { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--ink-deep); color: white; padding: 28px max(24px, calc((100vw - 1180px) / 2)); }
 .trust-strip > div { display: flex; align-items: center; gap: 16px; padding: 5px 28px; border-right: 1px solid rgba(255,255,255,.13); }
 .trust-strip > div:first-child { padding-left: 0; }
@@ -234,6 +244,8 @@ button { color: inherit; }
   .window-bar { margin-inline: -15px; }
   .creation-chat .chat-bubble { font-size: .78rem; }
   .connector-strip li { font-size: .68rem; padding: 4px 9px; }
+  .engine-proof { width: calc(100% - 14px); margin-top: 18px; padding: 13px 14px; }
+  .engine-proof p { font-size: .74rem; }
   .trust-strip { grid-template-columns: 1fr; }
   .trust-strip > div, .trust-strip > div:first-child { padding: 16px 0; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.13); }
   .trust-strip > div:last-child { border: 0; }
