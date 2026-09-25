@@ -16,7 +16,7 @@
     { who: 'agent', text: "Built it against your last three months of bills. Here's the sheet and a sample tenant email — take a look." },
     { who: 'agent', type: 'attachment', name: 'Tenant Utility Split.gsheet', meta: 'Google Sheet · 12 tenants · Delivered' },
     { who: 'customer', text: "This is great — next, could we get a phone app where I can forward each tenant's bill straight to the email I've got on file for them, and they can pay their share right from a Venmo link?" },
-    { who: 'agent', text: "Two quick things before I scope that: do you want it hosted on the environment we already have running for you, or somewhere else? And should the Venmo link point to one account for the whole property, or a separate one per building?" },
+    { who: 'agent', text: "Two quick things before I scope that: do you want it hosted on the environment I already have running for you, or somewhere else? And should the Venmo link point to one account for the whole property, or a separate one per building?" },
   ];
 
   function buildLine(line) {
