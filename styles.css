@@ -279,6 +279,13 @@ button { color: inherit; }
 .brand-footer .brand-mark { color: var(--forest); background: var(--cream); }
 .site-footer p { margin: 0; }
 .copyright { text-align: right; }
+.footer-legal {
+  grid-column: 1 / -1; margin-top: 4px !important; padding-top: 18px;
+  color: #b8ccc7; border-top: 1px solid rgba(255,255,255,.14);
+  font-size: .7rem; line-height: 1.55;
+}
+.footer-legal a { color: white; text-decoration: underline; text-underline-offset: 3px; }
+.privacy-site-footer { margin-top: 72px; }
 
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
