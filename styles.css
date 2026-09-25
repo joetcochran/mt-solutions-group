@@ -128,11 +128,11 @@ button { color: inherit; }
 }
 .engine-hub-label {
   position: absolute; left: var(--nx); top: var(--ny); transform: translate(-50%, -50%);
-  width: 20%; aspect-ratio: 1.28; padding: 2.5%; box-sizing: border-box;
+  width: 23%; aspect-ratio: 1.28; padding: 2%; box-sizing: border-box;
   display: grid; place-items: center; text-align: center;
   background: #195949; border-radius: 14%; box-shadow: 0 10px 24px rgba(10, 40, 34, .35);
 }
-.engine-hub-label b { color: #fff; font-size: clamp(.62rem, 1.55vw, .95rem); font-weight: 800; line-height: 1.25; }
+.engine-hub-label b { display: block; width: 100%; overflow-wrap: break-word; color: #fff; font-size: clamp(.6rem, 1.25vw, .78rem); font-weight: 800; line-height: 1.25; }
 .engine-chat-trigger {
   position: absolute; left: var(--nx); top: var(--ny); transform: translate(-50%, -50%);
   background: #fff; border: 1px solid rgba(22, 68, 62, .14); border-radius: 999px;
