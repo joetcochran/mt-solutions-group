@@ -7,7 +7,7 @@
   const OWNER = 'mt-analytics-owner-excluded';
   const DAYS = 180;
   const routes = new Set(['/', '/index.html', '/selected-work.html', '/get-started.html']);
-  const hosts = new Set(['mtsolutions.group', 'www.mtsolutions.group']);
+  const hosts = new Set(['virtastack.com', 'www.virtastack.com']);
   if (!hosts.has(location.hostname) || (!routes.has(location.pathname) && location.pathname !== '/privacy.html')) return;
   const read = key => { try { return localStorage.getItem(key); } catch { return null; } };
   const save = (key, value) => { try { localStorage.setItem(key, value); } catch { /* Session-only when storage is unavailable. */ } };
@@ -32,11 +32,11 @@
       return u.origin + '/';
     } catch { return ''; }
   };
-  const titles = { '/selected-work.html': 'Selected Work | MT Solutions Group', '/get-started.html': '30-Day Risk-Free AI Trial | MT Solutions Group' };
+  const titles = { '/selected-work.html': 'Selected Work | Virtastack', '/get-started.html': '30-Day Risk-Free AI Trial | Virtastack' };
   const page = {
     page_location: location.origin + location.pathname,
     page_referrer: safeReferrer(),
-    page_title: titles[location.pathname] || 'MT Solutions Group'
+    page_title: titles[location.pathname] || 'Virtastack'
   };
   function startClarity() {
     // Clarity observes the actual URL. Exclude query-bearing visits and private referrers.
@@ -66,7 +66,7 @@
     window.gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
     window.gtag('consent', 'update', { analytics_storage: 'granted' });
     window.gtag('js', new Date());
-    const config = { ...page, send_page_view: false, allow_google_signals: false, allow_ad_personalization_signals: false, cookie_domain: 'mtsolutions.group', cookie_expires: DAYS * 86400, cookie_update: false };
+    const config = { ...page, send_page_view: false, allow_google_signals: false, allow_ad_personalization_signals: false, cookie_domain: 'virtastack.com', cookie_expires: DAYS * 86400, cookie_update: false };
     // Keep only simple campaign labels. Never forward arbitrary URL queries, hashes or mailto URLs.
     for (const part of ['source', 'medium', 'name']) {
       const value = query.get(part === 'name' ? 'utm_campaign' : 'utm_' + part);
@@ -91,7 +91,7 @@
     for (const cookie of document.cookie.split(';')) {
       const name = cookie.trim().split('=')[0];
       if (!['_ga', '_ga_7DQS782PJN', '_clck', '_clsk'].includes(name)) continue;
-      for (const domain of ['', '; domain=mtsolutions.group', '; domain=www.mtsolutions.group']) {
+      for (const domain of ['', '; domain=virtastack.com', '; domain=www.virtastack.com']) {
         document.cookie = name + '=; Max-Age=0; path=/' + domain + '; SameSite=Lax; Secure';
       }
     }

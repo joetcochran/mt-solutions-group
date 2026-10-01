@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>30-Day Risk-Free AI Trial | MT Solutions Group</title><meta name="description" content="A 30-day risk-free AI trial from MT Solutions Group: find your first project, or bring the one you already have, and see it working before you commit."><link rel="stylesheet" href="styles.css"><script src="analytics.js" defer></script><script src="app.js" defer></script>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>30-Day Risk-Free AI Trial | Virtastack</title><meta name="description" content="A 30-day risk-free AI trial from Virtastack: find your first project, or bring the one you already have, and see it working before you commit."><link rel="stylesheet" href="styles.css"><script src="analytics.js" defer></script><script src="app.js" defer></script>
 <style>
 .trial-main{padding-bottom:80px}
 
@@ -94,14 +94,15 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
-      <a class="brand" href="index.html#top" aria-label="MT Solutions Group home">
+      <a class="brand" href="index.html#top" aria-label="Virtastack home">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 48 48" role="img">
-            <path d="M8 34V14l16 14 16-14v20" />
-            <path d="M15 34V25m18 9v-9" />
+            <path d="M8 12l16 25 16-25" />
+            <path d="M14 12l10 16 10-16" />
+            <path d="M20 12l4 7 4-7" />
           </svg>
         </span>
-        <span class="brand-name">MT <strong>Solutions Group</strong></span>
+        <span class="brand-name"><strong>Virta</strong>stack</span>
       </a>
 
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
@@ -114,7 +115,7 @@
         <a href="empowerment-engine.html">The Engine</a>
         <a href="project-ideas.html">Project ideas</a>
         <a href="personal-projects.html">Personal projects</a>
-        <a href="index.html#about">Why MT</a>
+        <a href="index.html#about">Why Virtastack</a>
         <a class="nav-cta" href="get-started.html#fork">Start your free trial</a>
       </nav>
     </header>
@@ -276,7 +277,7 @@
 <div class="brief-actions">
 <button id="q-copy" class="button button-primary" type="button">Copy for myself</button>
 <button id="q-download" class="button button-secondary" type="button">Download brief</button>
-<a id="q-email" class="button button-secondary" href="mailto:joe@mtsolutions.group">Send to Joe →</a>
+<a id="q-email" class="button button-secondary" href="mailto:joe@virtastack.com">Send to Joe →</a>
 </div>
 <p class="handoff-note">Sent straight to Joe. If that fails for any reason, it opens a draft in your mail app instead — nothing is lost. You can also copy or download the brief for yourself.</p>
 <p id="q-status" role="status" class="trial-status"></p>
@@ -296,14 +297,14 @@
     <footer class="site-footer">
       <a class="brand brand-footer" href="index.html#top">
         <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 48 48"><path d="M8 34V14l16 14 16-14v20"/><path d="M15 34V25m18 9v-9"/></svg>
+          <svg viewBox="0 0 48 48"><path d="M8 12l16 25 16-25"/><path d="M14 12l10 16 10-16"/><path d="M20 12l4 7 4-7"/></svg>
         </span>
-        <span class="brand-name">MT <strong>Solutions Group</strong></span>
+        <span class="brand-name"><strong>Virta</strong>stack</span>
       </a>
-      <div class="footer-contact"><p>Practical AI for small and midsize businesses.</p><a href="mailto:joe@mtsolutions.group">joe@mtsolutions.group</a></div>
+      <div class="footer-contact"><p>Practical AI for small and midsize businesses.</p><a href="mailto:joe@virtastack.com">joe@virtastack.com</a></div>
       <div class="privacy-links"><a href="privacy.html">Privacy</a><button type="button" data-analytics-settings hidden>Analytics preferences</button></div>
-      <p class="copyright">© <span id="year"></span> MT Solutions Group.</p>
-      <p class="footer-legal">MT Solutions Group is an independent setup and support service. It uses OpenClaw, open-source software licensed under the MIT License. OpenClaw © 2026 OpenClaw Foundation. MT Solutions Group is not affiliated with or endorsed by the OpenClaw Foundation. <a href="https://github.com/openclaw/openclaw/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">OpenClaw license <span aria-hidden="true">↗</span></a></p>
+      <p class="copyright">© <span id="year"></span> Virtastack.</p>
+      <p class="footer-legal">Virtastack is an independent setup and support service. It uses OpenClaw, open-source software licensed under the MIT License. OpenClaw © 2026 OpenClaw Foundation. Virtastack is not affiliated with or endorsed by the OpenClaw Foundation. <a href="https://github.com/openclaw/openclaw/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">OpenClaw license <span aria-hidden="true">↗</span></a></p>
     </footer>
 
 <script>
@@ -313,7 +314,7 @@ async function sendToWeb3Forms({ subject, message }) {
   const res = await fetch('https://api.web3forms.com/submit', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({ access_key: WEB3FORMS_ACCESS_KEY, subject, message, from_name: 'MT Solutions Group site' }),
+    body: JSON.stringify({ access_key: WEB3FORMS_ACCESS_KEY, subject, message, from_name: 'Virtastack site' }),
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok || data.success === false) throw new Error(data.message || 'Web3Forms submission failed');
@@ -359,7 +360,7 @@ async function sendToWeb3Forms({ subject, message }) {
     const lines = ["I'd like to talk through where AI could help my business.", ''];
     lines.push('What my business does / what\'s on my mind:', q1 || '(not answered yet)', '');
     lines.push('Where the week gets tedious or error-prone:', q2 || '(not answered yet)', '');
-    lines.push('Sent from the MT Solutions Group 30-day trial page.');
+    lines.push('Sent from the Virtastack 30-day trial page.');
     const body = lines.join('\n');
     const subject = "Let's find the right first project";
     status.textContent = 'Sending…';
@@ -368,7 +369,7 @@ async function sendToWeb3Forms({ subject, message }) {
       status.textContent = 'Sent — Joe will follow up soon.';
     } catch (err) {
       status.textContent = "Couldn't send automatically, opening your mail app instead…";
-      location.href = `mailto:joe@mtsolutions.group?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      location.href = `mailto:joe@virtastack.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
   });
 })();
@@ -498,9 +499,9 @@ window.mtInitQuestionnaire = (() => {
         details.append(dt, dd);
       });
 
-      brief = `30-day trial brief\nMT Solutions Group\n\n${fields.map(([label, value]) => `${label}\n${value}`).join('\n\n')}\n\nWhat I'm proposing: a 30-day, no-cost workshop to set up and prove out an AI Empowerment Agent around this problem. Most customers only need a few hours of training and setup to get productive with it.\n\nThis questionnaire organizes your answers and starts a conversation. It is not a feasibility assessment or a promise of results.\n\njoe@mtsolutions.group\nhttps://mtsolutions.group/`;
+      brief = `30-day trial brief\nVirtastack\n\n${fields.map(([label, value]) => `${label}\n${value}`).join('\n\n')}\n\nWhat I'm proposing: a 30-day, no-cost workshop to set up and prove out an AI Empowerment Agent around this problem. Most customers only need a few hours of training and setup to get productive with it.\n\nThis questionnaire organizes your answers and starts a conversation. It is not a feasibility assessment or a promise of results.\n\njoe@virtastack.com\nhttps://virtastack.com/`;
 
-      document.querySelector('#q-email').href = `mailto:joe@mtsolutions.group?subject=${encodeURIComponent('30-day trial: ' + (painPoint || 'a workflow to discuss'))}`;
+      document.querySelector('#q-email').href = `mailto:joe@virtastack.com?subject=${encodeURIComponent('30-day trial: ' + (painPoint || 'a workflow to discuss'))}`;
     }
 
     document.querySelector('#q-email').addEventListener('click', async event => {
@@ -513,7 +514,7 @@ window.mtInitQuestionnaire = (() => {
         status.textContent = 'Sent — Joe will follow up soon. You can still copy or download this brief for yourself below.';
       } catch (err) {
         status.textContent = "Couldn't send automatically, opening your mail app instead…";
-        location.href = `mailto:joe@mtsolutions.group?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(brief)}`;
+        location.href = `mailto:joe@virtastack.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(brief)}`;
       }
     });
     document.querySelector('#q-copy').addEventListener('click', async () => {
