@@ -93,7 +93,7 @@
     <h2>External approvals, orchestrated by email</h2>
     <p>Chasing down sign-off from people who don't log into your system, without it living in someone's inbox.</p>
     <div class="idea-details">
-      <div class="idea-detail"><p>The manual work today</p><p>Documents go to customers, vendors, or board members by email, and a coordinator chases replies while sorting approvals from questions and outdated versions. The real status lives in one person’s inbox.</p></div>
+      <div class="idea-detail"><p>The manual work today</p><p>Approval requests and supporting documents are emailed to customers, vendors, or board members one at a time. A coordinator chases replies while separating approvals from questions and outdated versions, and the true status is scattered across several inboxes.</p></div>
       <div class="idea-detail"><p>How the Engine changes it</p><p>Give each recipient a secure one-click approval link—or let them reply by email or SMS through Twilio—without creating another account. The Engine records the decision, sends reminders, routes questions to a person, and updates the source system through its API.</p></div>
     </div>
   </div>
@@ -105,7 +105,7 @@
     <h2>Training &amp; learning management</h2>
     <p>Keeping track of who's trained, who's overdue, and what they still need to complete.</p>
     <div class="idea-details">
-      <div class="idea-detail"><p>The manual work today</p><p>Training records sit across spreadsheets, an LMS, and managers’ inboxes, while supervisors manually identify who is overdue. The same generic course is assigned even when roles, locations, or policy changes differ.</p></div>
+      <div class="idea-detail"><p>The manual work today</p><p>Training records are scattered across spreadsheets, the LMS, and managers’ inboxes, so supervisors manually identify overdue training—when someone remembers to check. The same generic course is assigned despite differences in role, location, or policy. Assembling proof of completion for regulatory or compliance reviews is entirely manual.</p></div>
       <div class="idea-detail"><p>How the Engine changes it</p><p>Build role-specific micro-lessons from approved material and deliver them through Teams, Slack, email, or short ElevenLabs audio. Completion and quiz results flow back to the LMS or HR system, while managers see only overdue or uncertain cases that need attention.</p></div>
     </div>
   </div>
@@ -117,7 +117,7 @@
     <h2>Vendor coordination</h2>
     <p>Keeping multiple vendors, timelines, and handoffs from quietly falling out of sync.</p>
     <div class="idea-details">
-      <div class="idea-detail"><p>The manual work today</p><p>A project lead checks vendor portals, email chains, calls, and spreadsheets to reconstruct what is on schedule. A missed dependency often becomes visible only when the next vendor cannot start.</p></div>
+      <div class="idea-detail"><p>The manual work today</p><p>A project lead checks multiple vendor portals, email chains, call notes, and spreadsheets to reconstruct the schedule. Missed dependencies often become visible only when the next vendor cannot start. On coordination-heavy projects, that lack of reliable critical-path visibility creates serious timeline risk.</p></div>
       <div class="idea-detail"><p>How the Engine changes it</p><p>Use n8n to watch shared mailboxes and vendor APIs, normalize each update onto an event bus in your Azure or AWS environment, and maintain one live handoff view. The Engine posts concise Teams or Slack updates, texts overdue vendors through Twilio, and flags dependencies that need a human decision.</p></div>
     </div>
   </div>
@@ -129,7 +129,7 @@
     <h2>Field compliance, from a phone</h2>
     <p>Giving field staff a simple way to follow process correctly, without a full-time trainer riding along.</p>
     <div class="idea-details">
-      <div class="idea-detail"><p>The manual work today</p><p>Field staff carry paper forms or take loose photos, then reconstruct the visit later when details are already fading. Missing signatures, locations, or equipment readings send the back office into another round of calls and re-entry.</p></div>
+      <div class="idea-detail"><p>The manual work today</p><p>Field staff rely on paper forms and loose photos, then reconstruct visits later when details have faded and required signatures may have been missed. When a job cannot be completed, proving what happened and why is difficult. Scheduling and coordinating the follow-up visit becomes another manual process.</p></div>
       <div class="idea-detail"><p>How the Engine changes it</p><p>A focused phone app uses the camera, barcode scanning, geolocation, timestamps, and offline storage to guide the work and capture proof as it happens. It checks the job against an internal ERP or work-order API, catches missing steps on site, and syncs the completed record when connectivity returns.</p></div>
     </div>
   </div>
@@ -141,7 +141,7 @@
     <h2>Breaking free of niche vendor lock-in</h2>
     <p>When you're stuck doing things one provider's way because that's the only way anyone's ever shown you—until it isn't.</p>
     <div class="idea-details">
-      <div class="idea-detail"><p>The manual work today</p><p>Critical data is trapped behind a niche portal, rigid export, or aging device, so teams copy it elsewhere and shape their process around the vendor’s limitations. Every useful change depends on that vendor’s price, roadmap, and willingness to help.</p></div>
+      <div class="idea-detail"><p>The manual work today</p><p>Critical data is trapped behind a niche portal with rigid exports or restrictive login requirements, sometimes accessible only through an aging device. Teams copy the data elsewhere and shape their process around the vendor’s limitations. Any change that could differentiate the business still depends on the vendor’s pricing, roadmap, and willingness to help.</p></div>
       <div class="idea-detail"><p>How the Engine changes it</p><p>Bring permitted API calls, scheduled exports, email intake, and local device data into a customer-owned layer in Azure or AWS, then rebuild the few workflows that actually matter as small web or mobile tools. For older on-site equipment, even a Raspberry Pi can bridge serial ports or sensors to the event bus—without replacing the machine that still works.</p></div>
     </div>
   </div>
