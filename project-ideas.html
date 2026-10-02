@@ -70,7 +70,7 @@
     <p>Catching bad, duplicate, or out-of-policy data before it becomes everyone else's problem.</p>
     <div class="idea-details">
       <div class="idea-detail"><p>The manual work today</p><p>Someone consolidates data from three systems—the ERP, CRM, and spreadsheets—then manually compares rows against policy rules and reference lists. With no clear source of truth, errors surface late and every questionable record starts a new email thread, often with a different owner.</p></div>
-      <div class="idea-detail"><p>How the Engine changes it</p><p>Run event-driven checks inside your Azure or AWS subscription, verify details through trusted external APIs, and send only the exceptions to Slack or Microsoft Teams. A reviewer approves the fix before the Engine writes it back through the ERP’s internal API, preserving a complete audit trail.</p></div>
+      <div class="idea-detail"><p>How the Engine changes it</p><p>The Engine reconciles ERP, CRM, and spreadsheet data inside a governed model in your Azure or AWS subscription, preserving source lineage while applying policy rules and trusted external verification APIs. Exceptions become a single owned queue in Slack or Microsoft Teams; after human approval, corrections flow back through internal system APIs with a complete audit trail.</p></div>
     </div>
   </div>
 </article>
@@ -82,7 +82,7 @@
     <p>Getting costs coded, allocated, and posted correctly without passing spreadsheets between people.</p>
     <div class="idea-details">
       <div class="idea-detail"><p>The manual work today</p><p>An invoice arrives by email, and someone reviews every line for accuracy, identifies the customer or project, calculates the passthrough, and selects the correct GL account. If the vendor is missing from the accounting system, they create it manually before another person checks the spreadsheet and approves posting.</p></div>
-      <div class="idea-detail"><p>How the Engine changes it</p><p>The Engine reads the invoice, matches it to project and customer data through your ERP API, and proposes the allocation and GL coding. Approval happens in Teams or Slack; then n8n or an event-bus workflow posts the approved entries and attaches the source document.</p></div>
+      <div class="idea-detail"><p>How the Engine changes it</p><p>The Engine extracts and validates invoice lines, checks the ERP’s project, customer, vendor, and GL data, and flags missing vendors for an approval-based onboarding workflow that can collect tax documents and verify details through external APIs. It calculates the proposed passthrough and coding, routes the packet through Teams or Slack, then uses n8n or an event bus to post approved entries and attach the invoice.</p></div>
     </div>
   </div>
 </article>
@@ -94,7 +94,7 @@
     <p>Chasing down sign-off from people who don't log into your system, without it living in someone's inbox.</p>
     <div class="idea-details">
       <div class="idea-detail"><p>The manual work today</p><p>Approval requests and supporting documents are emailed to customers, vendors, or board members one at a time. A coordinator chases replies while separating approvals from questions and outdated versions, and the true status is scattered across several inboxes.</p></div>
-      <div class="idea-detail"><p>How the Engine changes it</p><p>Give each recipient a secure one-click approval link—or let them reply by email or SMS through Twilio—without creating another account. The Engine records the decision, sends reminders, routes questions to a person, and updates the source system through its API.</p></div>
+      <div class="idea-detail"><p>How the Engine changes it</p><p>Each request receives a tracked, versioned approval link, while email replies and Twilio SMS responses from every participant flow into one status record—no new account required. The Engine distinguishes approvals from questions, sends reminders, routes exceptions to an owner, and updates the source system through its API.</p></div>
     </div>
   </div>
 </article>
@@ -106,7 +106,7 @@
     <p>Keeping track of who's trained, who's overdue, and what they still need to complete.</p>
     <div class="idea-details">
       <div class="idea-detail"><p>The manual work today</p><p>Training records are scattered across spreadsheets, the LMS, and managers’ inboxes, so supervisors manually identify overdue training—when someone remembers to check. The same generic course is assigned despite differences in role, location, or policy. Assembling proof of completion for regulatory or compliance reviews is entirely manual.</p></div>
-      <div class="idea-detail"><p>How the Engine changes it</p><p>Build role-specific micro-lessons from approved material and deliver them through Teams, Slack, email, or short ElevenLabs audio. Completion and quiz results flow back to the LMS or HR system, while managers see only overdue or uncertain cases that need attention.</p></div>
+      <div class="idea-detail"><p>How the Engine changes it</p><p>The Engine reconciles LMS, HR, and spreadsheet records on a schedule, identifies overdue or soon-to-expire training, and assigns approved material based on role, location, and current policy. It delivers reminders and micro-lessons through Teams, Slack, email, or ElevenLabs audio, then returns completion evidence to the LMS and produces an audit-ready compliance record.</p></div>
     </div>
   </div>
 </article>
@@ -118,7 +118,7 @@
     <p>Keeping multiple vendors, timelines, and handoffs from quietly falling out of sync.</p>
     <div class="idea-details">
       <div class="idea-detail"><p>The manual work today</p><p>A project lead checks multiple vendor portals, email chains, call notes, and spreadsheets to reconstruct the schedule. Missed dependencies often become visible only when the next vendor cannot start. On coordination-heavy projects, that lack of reliable critical-path visibility creates serious timeline risk.</p></div>
-      <div class="idea-detail"><p>How the Engine changes it</p><p>Use n8n to watch shared mailboxes and vendor APIs, normalize each update onto an event bus in your Azure or AWS environment, and maintain one live handoff view. The Engine posts concise Teams or Slack updates, texts overdue vendors through Twilio, and flags dependencies that need a human decision.</p></div>
+      <div class="idea-detail"><p>How the Engine changes it</p><p>n8n watches shared mailboxes and vendor APIs while email or Twilio SMS check-ins capture updates from vendors without portals; every update lands on an event bus in your Azure or AWS environment. The Engine recalculates dependencies and critical-path risk, maintains one live schedule, and alerts Teams or Slack before a delayed handoff blocks the next vendor.</p></div>
     </div>
   </div>
 </article>
@@ -130,7 +130,7 @@
     <p>Giving field staff a simple way to follow process correctly, without a full-time trainer riding along.</p>
     <div class="idea-details">
       <div class="idea-detail"><p>The manual work today</p><p>Field staff rely on paper forms and loose photos, then reconstruct visits later when details have faded and required signatures may have been missed. When a job cannot be completed, proving what happened and why is difficult. Scheduling and coordinating the follow-up visit becomes another manual process.</p></div>
-      <div class="idea-detail"><p>How the Engine changes it</p><p>A focused phone app uses the camera, barcode scanning, geolocation, timestamps, and offline storage to guide the work and capture proof as it happens. It checks the job against an internal ERP or work-order API, catches missing steps on site, and syncs the completed record when connectivity returns.</p></div>
+      <div class="idea-detail"><p>How the Engine changes it</p><p>A focused phone app uses the camera, barcode scanning, geolocation, timestamps, offline storage, and on-screen signatures to capture a complete, defensible record during the visit. If work cannot be completed, it requires a reason and supporting evidence, then creates and helps schedule the follow-up through the ERP or work-order API and sends confirmations by email or SMS.</p></div>
     </div>
   </div>
 </article>
@@ -142,7 +142,7 @@
     <p>When you're stuck doing things one provider's way because that's the only way anyone's ever shown you—until it isn't.</p>
     <div class="idea-details">
       <div class="idea-detail"><p>The manual work today</p><p>Critical data is trapped behind a niche portal with rigid exports or restrictive login requirements, sometimes accessible only through an aging device. Teams copy the data elsewhere and shape their process around the vendor’s limitations. Any change that could differentiate the business still depends on the vendor’s pricing, roadmap, and willingness to help.</p></div>
-      <div class="idea-detail"><p>How the Engine changes it</p><p>Bring permitted API calls, scheduled exports, email intake, and local device data into a customer-owned layer in Azure or AWS, then rebuild the few workflows that actually matter as small web or mobile tools. For older on-site equipment, even a Raspberry Pi can bridge serial ports or sensors to the event bus—without replacing the machine that still works.</p></div>
+      <div class="idea-detail"><p>How the Engine changes it</p><p>Using permitted APIs, scheduled exports, monitored email, or approved browser automation, the Engine brings portal data into a customer-owned integration layer in Azure or AWS; a Raspberry Pi can securely bridge older on-site equipment when needed. It normalizes the data onto an event bus and powers focused web or mobile workflows, allowing the business to improve its process without waiting for the vendor’s roadmap.</p></div>
     </div>
   </div>
 </article>
