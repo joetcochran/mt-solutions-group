@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Virtastack</title>
+  <desc id="desc">Virtastack Signal V and the line Connect the tools. Keep the work moving.</desc>
+  <rect width="1200" height="630" fill="#0B1220"/>
+  <circle cx="1040" cy="-40" r="310" fill="#111E35"/>
+  <circle cx="1130" cy="600" r="250" fill="#0F1A2C"/>
+  <g transform="translate(150 150) scale(4.8)">
+    <path d="M14 15 32 49 50 15" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="14" cy="15" r="8" fill="#2563EB"/>
+    <circle cx="32" cy="49" r="8" fill="#67E8F9"/>
+    <circle cx="50" cy="15" r="8" fill="#F97316"/>
+  </g>
+  <text x="500" y="285" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="104" font-weight="750" letter-spacing="-4">Virta<tspan font-weight="450">stack</tspan></text>
+  <text x="508" y="354" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="29" font-weight="500" letter-spacing="0.2">Connect the tools. Keep the work moving.</text>
+</svg>
