@@ -69,7 +69,7 @@
     <h2>QA &amp; compliance data scrubbing</h2>
     <p>Catching bad, duplicate, or out-of-policy data before it becomes everyone else's problem.</p>
     <div class="idea-details">
-      <div class="idea-detail"><p>The manual work today</p><p>Someone exports data from the ERP, CRM, and spreadsheets, then compares rows against policy rules and reference lists by hand. Errors surface late, and every questionable record starts another email thread.</p></div>
+      <div class="idea-detail"><p>The manual work today</p><p>Someone consolidates data from three systems—the ERP, CRM, and spreadsheets—then manually compares rows against policy rules and reference lists. With no clear source of truth, errors surface late and every questionable record starts a new email thread, often with a different owner.</p></div>
       <div class="idea-detail"><p>How the Engine changes it</p><p>Run event-driven checks inside your Azure or AWS subscription, verify details through trusted external APIs, and send only the exceptions to Slack or Microsoft Teams. A reviewer approves the fix before the Engine writes it back through the ERP’s internal API, preserving a complete audit trail.</p></div>
     </div>
   </div>
@@ -79,9 +79,9 @@
   <span>02</span>
   <div>
     <h2>Passthrough invoicing &amp; GL entries</h2>
-    <p>Getting costs coded, allocated, and posted correctly without someone re-keying every line.</p>
+    <p>Getting costs coded, allocated, and posted correctly without passing spreadsheets between people.</p>
     <div class="idea-details">
-      <div class="idea-detail"><p>The manual work today</p><p>A vendor invoice arrives by email, someone re-keys every line, looks up the customer or project, calculates the passthrough, and chooses a GL account. Another person checks the spreadsheet before anything can be posted.</p></div>
+      <div class="idea-detail"><p>The manual work today</p><p>An invoice arrives by email, and someone reviews every line for accuracy, identifies the customer or project, calculates the passthrough, and selects the correct GL account. If the vendor is missing from the accounting system, they create it manually before another person checks the spreadsheet and approves posting.</p></div>
       <div class="idea-detail"><p>How the Engine changes it</p><p>The Engine reads the invoice, matches it to project and customer data through your ERP API, and proposes the allocation and GL coding. Approval happens in Teams or Slack; then n8n or an event-bus workflow posts the approved entries and attaches the source document.</p></div>
     </div>
   </div>
