@@ -4,11 +4,11 @@ Static brochure site for Joe Cochran's practical software and AI consulting, pub
 
 ## Pages and behavior
 
-- `index.html`: positioning, a 30-day risk-free trial as the primary offer, selected-work previews, bio, and direct contact.
+- `index.html`: positioning, a free workflow consultation as the primary offer, clear service and buyer-fit sections, a 30-day pilot as the secondary offer, selected-work previews, bio, and direct contact.
 - `selected-work.html` and `work.js`: accessible tabs with four-step SVG/CSS workflow illustrations, pause/replay controls, keyboard navigation, deep links, reduced-motion support, and expandable stories covering three systems Joe built in previous roles. Client identities and proprietary artifacts are omitted; workflow illustrations are labeled, with no invented results.
-- `get-started.html`: the 30-day trial page. A fork lets a visitor either talk through "I don't know where to start" (a short AI Coach form) or answer a branching questionnaire for "I have a specific pain point," which adapts based on team size, revenue, and where it hurts most. Both end in a brief sent to Joe.
+- `get-started.html`: a short free-consultation form followed by the 30-day pilot details. A fork lets a visitor either talk through "I don't know where to start" (a short AI Coach form) or answer a branching questionnaire for "I have a specific pain point," which adapts based on team size, revenue, and where it hurts most. All submission paths collect a name and reply email before sending to Joe.
 - `app.js`: shared navigation (menu toggle, footer year, scroll-reveal) used by every page.
-- Submissions on `get-started.html` (the AI Coach form and the questionnaire) POST directly to Web3Forms, a third-party form-delivery API, using a public site access key embedded in the page; Web3Forms forwards the message to Joe's inbox automatically. If that request fails, the page falls back to opening a `mailto:` draft instead. Either way, the visitor can also copy or download their brief as plain text. No response is persisted in the browser after refresh, and there is no site-side backend or database.
+- Submissions on `get-started.html` (the consultation form, AI Coach form, and questionnaire) POST directly to Web3Forms, a third-party form-delivery API, using a public site access key embedded in the page; Web3Forms forwards the message to Joe's inbox automatically. If that request fails, the page falls back to opening a `mailto:` draft instead. The questionnaire also lets the visitor copy or download its brief as plain text. No response is persisted in the browser after refresh, and there is no site-side backend or database.
 - Real AI analysis remains future work. The selected-work visuals are illustrative, not working client-system demos.
 
 ## Local preview
@@ -25,7 +25,7 @@ Never put model API keys, SMTP credentials, or client data in this public reposi
 
 Before the domain cutover, configure inbound forwarding and outbound sending for `joe@virtastack.com` using the same providers as the prior domain. Email has no code-level integration with this repository — no API calls, no credentials, no site-side interaction.
 
-`get-started.html` is the one page with a real client-side API call: its two forms POST to `https://api.web3forms.com/submit` with a public Web3Forms access key embedded in the page (not a secret; Web3Forms access keys are designed to be client-visible) so a submission reaches Joe's inbox without the visitor having to send an email themselves. No other page, and no other credential, makes a network call.
+`get-started.html` is the one page with a real client-side API call: its three submission paths POST to `https://api.web3forms.com/submit` with a public Web3Forms access key embedded in the page (not a secret; Web3Forms access keys are designed to be client-visible) so a submission reaches Joe's inbox without the visitor having to send an email themselves. No other page, and no other credential, makes a network call.
 
 ## Analytics
 
@@ -37,7 +37,7 @@ Before the domain cutover, configure inbound forwarding and outbound sending for
 - Footer Analytics preferences permits withdrawal. The Google disable flag and Clarity stop API stop collection; accessible provider cookies are removed. Consent preferences and GA cookies expire after 180 days; Clarity controls its cookie lifetimes.
 - Events: `contact_click` (fixed placement), `linkedin_click`, and `case_select` (known case ID).
 - Email clicks indicate intent, not email delivery, leads, or purchases. Mark selected events as key events in GA4 if desired; no dashboard-side configuration is implied by this code.
-- Advertiser signals and ad personalization are disabled; Clarity uses Consent V2 with analytics granted and advertising denied only after opt-in. The get-started page's AI Coach and questionnaire panels are explicitly masked from Clarity replay (matching how the old worksheet was masked), and generated mailto bodies stay out of DOM attributes. Clarity is excluded on query-bearing visits, unrecognized fragments, and private internal or query-bearing referrers.
+- Advertiser signals and ad personalization are disabled; Clarity uses Consent V2 with analytics granted and advertising denied only after opt-in. The get-started page's consultation, AI Coach, and questionnaire panels are explicitly masked from Clarity replay (matching how the old worksheet was masked), and generated mailto bodies stay out of DOM attributes. Clarity is excluded on query-bearing visits, unrecognized fragments, and private internal or query-bearing referrers.
 - Owner/test exclusion: visit `https://virtastack.com/?analytics=off` in each browser. `?analytics=on` clears that exclusion but does not bypass consent. Global Privacy Control also prevents tracking.
 - Page URLs exclude queries/hashes; external referrers retain origin only; private internal referrer paths are dropped. Only simple alphanumeric/hyphen/underscore UTM source, medium and campaign labels are passed.
 - Browser checks covered rejection/reload, acceptance, withdrawal and cookie cleanup, preview/privacy/owner exclusion, mobile layout, mouse/keyboard case selection, failed clipboard operations, and no answer/query sentinel in event payloads. Real Google tag collection was intercepted locally (no synthetic visits sent), verifying pageview and custom-event request construction. GA4 dashboard receipt still requires a live consenting visit and dashboard verification.

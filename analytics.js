@@ -40,7 +40,7 @@
   };
   function startClarity() {
     // Clarity observes the actual URL. Exclude query-bearing visits and private referrers.
-    if (location.search || (location.hash && !/^#(top|what-we-fix|selected-work|fork|first-engagement|how-it-works|about|fleet-citations|field-services|multi-currency)$/.test(location.hash))) return;
+    if (location.search || (location.hash && !/^#(top|what-we-fix|services|selected-work|consultation|fork|timeline|first-engagement|how-it-works|about|fleet-citations|field-services|multi-currency)$/.test(location.hash))) return;
     try { const ref = new URL(document.referrer); if (ref.search || (hosts.has(ref.hostname) && !routes.has(ref.pathname))) return; } catch {}
     if (clarityLoaded) {
       if (clarityStopped) { window.clarity('start'); clarityStopped = false; }

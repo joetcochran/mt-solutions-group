@@ -1,7 +1,22 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>30-Day Risk-Free AI Trial | Virtastack</title><meta name="description" content="A 30-day risk-free AI trial from Virtastack: find your first project, or bring the one you already have, and see it working before you commit."><link rel="stylesheet" href="styles.css"><link rel="icon" href="assets/brand/virtastack-signal-v-tile.svg" type="image/svg+xml"><script src="analytics.js" defer></script><script src="app.js" defer></script>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Free AI Workflow Consultation | Virtastack</title><meta name="description" content="Talk directly with Joe Cochran about a frustrating workflow, get a practical first recommendation, and explore a focused 30-day AI pilot."><link rel="stylesheet" href="styles.css"><link rel="icon" href="assets/brand/virtastack-signal-v-tile.svg" type="image/svg+xml"><script src="analytics.js" defer></script><script src="app.js" defer></script>
 <style>
 .trial-main{padding-bottom:80px}
+
+.consultation{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(40px,7vw,90px);align-items:start;margin-top:56px;padding:clamp(30px,5vw,58px);background:var(--ink-deep);color:white;border-radius:30px;scroll-margin-top:104px}
+.consultation .eyebrow{color:var(--gold)}
+.consultation h1{font:500 clamp(2.4rem,4.8vw,4.1rem)/1.06 Georgia,serif;letter-spacing:-.045em;margin:0 0 22px}
+.consultation-copy>p:not(.eyebrow){color:#dbe4ef;font-size:1.04rem;line-height:1.7}
+.consultation-points{display:grid;gap:13px;margin:28px 0 0;padding:0;list-style:none}
+.consultation-points li{position:relative;padding-left:28px;color:#e2e8f0}
+.consultation-points li::before{content:"✓";position:absolute;left:0;color:var(--coral);font-weight:900}
+.consultation-form{padding:clamp(24px,4vw,38px);background:white;color:var(--text);border-radius:22px}
+.consultation-form h2{margin:0 0 8px;font:500 clamp(1.55rem,3vw,2.15rem)/1.15 Georgia,serif;color:var(--ink-deep);letter-spacing:-.03em}
+.consultation-form>p{margin:0 0 24px;color:var(--muted);font-size:.9rem}
+.consultation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}
+.consultation-grid .trial-field:last-of-type{grid-column:1/-1}
+.consultation-form .button{width:100%}
+.consultation-form .handoff-note{margin:14px 0 0}
 
 .trial-hero{padding:56px 0 40px;max-width:800px}
 .trial-hero h1{font:500 clamp(2.6rem,5.4vw,4.6rem)/1.05 Georgia,serif;letter-spacing:-.045em;color:var(--ink-deep);margin:0 0 24px}
@@ -45,8 +60,8 @@
 
 .trial-field{margin-bottom:24px}
 .trial-field label{display:block;font-weight:700;color:var(--ink);font-size:.92rem;margin-bottom:8px}
-.trial-field textarea,.trial-other-input{width:100%;padding:13px 15px;border:1.5px solid #cbd5e1;border-radius:14px;background:white;color:var(--text);font:inherit;font-size:.92rem;resize:vertical}
-.trial-field textarea:focus,.trial-other-input:focus{outline:none;border-color:var(--forest-bright);box-shadow:0 0 0 4px rgba(37,99,235,.1)}
+.trial-field input[type="text"],.trial-field input[type="email"],.trial-field textarea,.trial-other-input{width:100%;padding:13px 15px;border:1.5px solid #cbd5e1;border-radius:14px;background:white;color:var(--text);font:inherit;font-size:.92rem;resize:vertical}
+.trial-field input[type="text"]:focus,.trial-field input[type="email"]:focus,.trial-field textarea:focus,.trial-other-input:focus{outline:none;border-color:var(--forest-bright);box-shadow:0 0 0 4px rgba(37,99,235,.1)}
 .trial-other-input{margin-top:12px}
 
 .trial-fieldset{border:0;padding:0;margin:0 0 26px}
@@ -81,6 +96,9 @@
 .trial-nav .button{min-height:48px}
 
 @media(max-width:760px){
+.consultation{grid-template-columns:1fr;margin-top:28px;padding:26px 20px}
+.consultation-grid{grid-template-columns:1fr}
+.consultation-grid .trial-field:last-of-type{grid-column:auto}
 .trial-fork-grid{grid-template-columns:1fr}
 .trial-choice-grid{grid-template-columns:repeat(2,1fr)}
 .trial-choice-grid-wide{grid-template-columns:1fr}
@@ -112,11 +130,38 @@
         <a href="project-ideas.html">Project ideas</a>
         <a href="personal-projects.html">Personal projects</a>
         <a href="index.html#about">Why Virtastack</a>
-        <a class="nav-cta" href="get-started.html#fork">Start your free trial</a>
+        <a class="nav-cta" href="get-started.html#consultation">Free consultation</a>
       </nav>
     </header>
 
 <main id="main" class="section-shell trial-main">
+
+<section class="consultation" id="consultation" aria-labelledby="consultation-heading">
+<div class="consultation-copy">
+<p class="eyebrow eyebrow-light"><span></span> Free workflow consultation</p>
+<h1 id="consultation-heading">Bring one frustrating handoff.</h1>
+<p>You do not need a finished specification or even certainty that AI is the answer. Tell me where work slows down, gets copied twice, or depends on someone remembering every exception.</p>
+<p>We will identify a practical starting point together. You will talk directly with me—not a sales team.</p>
+<ul class="consultation-points">
+<li>Clarify the workflow and the real source of friction</li>
+<li>Decide whether AI, automation, simpler software, or a process change fits</li>
+<li>Leave with a useful next step, even if we do not work together</li>
+</ul>
+</div>
+<form class="consultation-form" id="consultation-form" data-clarity-mask="True">
+<h2>Request your consultation</h2>
+<p>A few details are enough. Joe will follow up directly.</p>
+<div class="consultation-grid">
+<div class="trial-field"><label for="consultation-name">Name</label><input id="consultation-name" name="name" type="text" autocomplete="name" required></div>
+<div class="trial-field"><label for="consultation-email">Email</label><input id="consultation-email" name="email" type="email" autocomplete="email" required></div>
+<div class="trial-field"><label for="consultation-company">Company <span class="optional-label">(optional)</span></label><input id="consultation-company" name="company" type="text" autocomplete="organization"></div>
+<div class="trial-field"><label for="consultation-problem">Where does work get stuck?</label><textarea id="consultation-problem" name="problem" rows="4" maxlength="900" required placeholder="For example: invoice approvals bounce between email, a spreadsheet, and three different people."></textarea></div>
+</div>
+<button type="submit" class="button button-primary">Request a free consultation →</button>
+<p id="consultation-status" role="status" class="trial-status"></p>
+<p class="handoff-note">Sent directly to Joe. No mailing list and no obligation.</p>
+</form>
+</section>
 
 <section class="trial-hero">
 <p class="eyebrow"><span></span> A new way to start</p>
@@ -152,9 +197,13 @@
 <h2 id="coach-heading" tabindex="-1">Let's find the first tool worth building.</h2>
 <p>You don't need to arrive with a fully scoped problem. My job is matching what's tedious in your business to the first tool worth building—not convincing you AI belongs everywhere.</p>
 <form id="coach-form">
+<div class="consultation-grid">
+<div class="trial-field"><label for="coach-name">Name</label><input id="coach-name" type="text" autocomplete="name" required></div>
+<div class="trial-field"><label for="coach-email">Email</label><input id="coach-email" type="email" autocomplete="email" required></div>
+</div>
 <div class="trial-field"><label for="coach-q1">What does your business do, and what's on your mind about AI right now?</label><textarea id="coach-q1" rows="3" maxlength="600" placeholder="For example: we run a small logistics brokerage and everyone keeps telling us we should be 'using AI'—we just don't know for what."></textarea></div>
 <div class="trial-field"><label for="coach-q2">Where's the most tedious, repetitive, or error-prone part of a typical week for your team?</label><textarea id="coach-q2" rows="3" maxlength="600" placeholder="Optional, but it helps me come prepared."></textarea></div>
-<button type="submit" class="button button-primary">Book an intro conversation →</button>
+<button type="submit" class="button button-primary">Request an intro conversation →</button>
 </form>
 <p id="coach-status" role="status" class="trial-status"></p>
 <p class="handoff-note">Sent straight to Joe. If that fails for any reason, it opens a draft in your mail app instead — nothing is lost.</p>
@@ -270,6 +319,10 @@
 <p>Take a look, then send it to Joe—or grab a copy for yourself first.</p>
 <dl class="brief-details" id="summary-details"></dl>
 <p class="brief-caveat">This questionnaire organizes your answers and starts a conversation. It is not a feasibility assessment or a promise of results.</p>
+<div class="consultation-grid">
+<div class="trial-field"><label for="q-name">Name</label><input id="q-name" type="text" autocomplete="name" required></div>
+<div class="trial-field"><label for="q-contact-email">Email</label><input id="q-contact-email" type="email" autocomplete="email" required></div>
+</div>
 <div class="brief-actions">
 <button id="q-copy" class="button button-primary" type="button">Copy for myself</button>
 <button id="q-download" class="button button-secondary" type="button">Download brief</button>
@@ -306,16 +359,40 @@
 <script>
 // --- Web3Forms: direct send, with mailto as an automatic fallback ---
 const WEB3FORMS_ACCESS_KEY = '46ff98e7-5ae3-4877-bbbd-da8c2a712dd6';
-async function sendToWeb3Forms({ subject, message }) {
+async function sendToWeb3Forms(payload) {
   const res = await fetch('https://api.web3forms.com/submit', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({ access_key: WEB3FORMS_ACCESS_KEY, subject, message, from_name: 'Virtastack site' }),
+    body: JSON.stringify({ access_key: WEB3FORMS_ACCESS_KEY, from_name: 'Virtastack site', ...payload }),
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok || data.success === false) throw new Error(data.message || 'Web3Forms submission failed');
   return data;
 }
+
+// --- Free consultation: intentionally short, with enough contact detail to follow up ---
+(() => {
+  const form = document.querySelector('#consultation-form');
+  const status = document.querySelector('#consultation-status');
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const name = document.querySelector('#consultation-name').value.trim();
+    const email = document.querySelector('#consultation-email').value.trim();
+    const company = document.querySelector('#consultation-company').value.trim();
+    const problem = document.querySelector('#consultation-problem').value.trim();
+    const message = [`Name: ${name}`, `Email: ${email}`, `Company: ${company || '(not provided)'}`, '', 'Where work gets stuck:', problem].join('\n');
+    status.textContent = 'Sending…';
+    try {
+      await sendToWeb3Forms({ subject: `Free workflow consultation request from ${name}`, name, email, company, message });
+      status.textContent = 'Sent — Joe will follow up directly.';
+      form.reset();
+    } catch (err) {
+      status.textContent = "Couldn't send automatically, opening your mail app instead…";
+      location.href = `mailto:joe@virtastack.com?subject=${encodeURIComponent('Free workflow consultation request')}&body=${encodeURIComponent(message)}`;
+    }
+  });
+})();
 
 // --- Fork: choose a path, or go back to the choice ---
 (() => {
@@ -351,9 +428,12 @@ async function sendToWeb3Forms({ subject, message }) {
   const status = document.querySelector('#coach-status');
   form.addEventListener('submit', async event => {
     event.preventDefault();
+    if (!form.reportValidity()) return;
+    const name = document.querySelector('#coach-name').value.trim();
+    const email = document.querySelector('#coach-email').value.trim();
     const q1 = document.querySelector('#coach-q1').value.trim();
     const q2 = document.querySelector('#coach-q2').value.trim();
-    const lines = ["I'd like to talk through where AI could help my business.", ''];
+    const lines = [`Name: ${name}`, `Email: ${email}`, '', "I'd like to talk through where AI could help my business.", ''];
     lines.push('What my business does / what\'s on my mind:', q1 || '(not answered yet)', '');
     lines.push('Where the week gets tedious or error-prone:', q2 || '(not answered yet)', '');
     lines.push('Sent from the Virtastack 30-day trial page.');
@@ -361,7 +441,7 @@ async function sendToWeb3Forms({ subject, message }) {
     const subject = "Let's find the right first project";
     status.textContent = 'Sending…';
     try {
-      await sendToWeb3Forms({ subject, message: body });
+      await sendToWeb3Forms({ subject, name, email, message: body });
       status.textContent = 'Sent — Joe will follow up soon.';
     } catch (err) {
       status.textContent = "Couldn't send automatically, opening your mail app instead…";
@@ -504,13 +584,21 @@ window.mtInitQuestionnaire = (() => {
       event.preventDefault();
       const subject = '30-day trial: ' + (radioAnswer('painPoint', 'painPoint-other') || 'a workflow to discuss');
       const status = document.querySelector('#q-status');
+      const nameInput = document.querySelector('#q-name');
+      const emailInput = document.querySelector('#q-contact-email');
+      if (!nameInput.value.trim() || !emailInput.validity.valid) {
+        status.textContent = 'Add your name and a valid email so Joe can follow up.';
+        (!nameInput.value.trim() ? nameInput : emailInput).focus();
+        return;
+      }
+      const contactBrief = `Name: ${nameInput.value.trim()}\nEmail: ${emailInput.value.trim()}\n\n${brief}`;
       status.textContent = 'Sending…';
       try {
-        await sendToWeb3Forms({ subject, message: brief });
+        await sendToWeb3Forms({ subject, name: nameInput.value.trim(), email: emailInput.value.trim(), message: contactBrief });
         status.textContent = 'Sent — Joe will follow up soon. You can still copy or download this brief for yourself below.';
       } catch (err) {
         status.textContent = "Couldn't send automatically, opening your mail app instead…";
-        location.href = `mailto:joe@virtastack.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(brief)}`;
+        location.href = `mailto:joe@virtastack.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(contactBrief)}`;
       }
     });
     document.querySelector('#q-copy').addEventListener('click', async () => {
