@@ -29,13 +29,13 @@ Before the domain cutover, configure inbound forwarding and outbound sending for
 
 ## Analytics
 
-`analytics.js` uses GA4 `G-7DQS782PJN` and Microsoft Clarity `yjpn9hzcac` on the production homepage, selected-work page, and get-started page only. `privacy.html` provides preferences without tracking itself. Unlisted drafts and non-production hosts are excluded.
+`analytics.js` uses GA4 `G-7DQS782PJN`, the connected Google Ads destination `AW-18510570602`, and Microsoft Clarity `yjpn9hzcac` on the production homepage, selected-work page, and get-started page only. `privacy.html` provides preferences without tracking itself. Unlisted drafts and non-production hosts are excluded.
 
 **Deployment check:** Enhanced measurement was verified OFF in the Google-served tag on September 17, 2026. Keep it OFF in GA4 Admin → Data streams → Virtastack web stream. Keep automatic form/outbound collection off. Custom events deliberately never include link URLs or user text.
 
 - Basic consent: the Google tag is not requested until opt-in. No tracking requests are made after rejection; the site remains usable.
-- Footer Analytics preferences permits withdrawal. The Google disable flag and Clarity stop API stop collection; accessible provider cookies are removed. Consent preferences and GA cookies expire after 180 days; Clarity controls its cookie lifetimes.
-- Events: `contact_click` (fixed placement), `linkedin_click`, and `case_select` (known case ID).
+- Footer Analytics preferences permits withdrawal. The Google disable flags for both GA4 and Ads and the Clarity stop API stop collection; accessible provider cookies are removed. Consent preferences and GA cookies expire after 180 days; Clarity controls its cookie lifetimes.
+- Events: `contact_click` (fixed placement), `linkedin_click`, `case_select` (known case ID), and the Google Ads inquiry conversion `AW-18510570602/ZaoFCJL_r5sdEOrIw_pE`. The conversion fires only after Web3Forms confirms a successful short-consultation or guided-questionnaire submission, and only when analytics consent permits the Google tag. It contains no form values.
 - Email clicks indicate intent, not email delivery, leads, or purchases. Mark selected events as key events in GA4 if desired; no dashboard-side configuration is implied by this code.
 - Advertiser signals and ad personalization are disabled; Clarity uses Consent V2 with analytics granted and advertising denied only after opt-in. The get-started page's consultation, AI Coach, and questionnaire panels are explicitly masked from Clarity replay (matching how the old worksheet was masked), and generated mailto bodies stay out of DOM attributes. Clarity is excluded on query-bearing visits, unrecognized fragments, and private internal or query-bearing referrers.
 - Owner/test exclusion: visit `https://virtastack.com/?analytics=off` in each browser. `?analytics=on` clears that exclusion but does not bypass consent. Global Privacy Control also prevents tracking.

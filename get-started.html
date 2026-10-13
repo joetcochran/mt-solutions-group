@@ -374,6 +374,7 @@ async function sendToWeb3Forms(payload) {
 (() => {
   const form = document.querySelector('#consultation-form');
   const status = document.querySelector('#consultation-status');
+  const submitButton = form.querySelector('[type="submit"]');
   form.addEventListener('submit', async event => {
     event.preventDefault();
     if (!form.reportValidity()) return;
@@ -383,13 +384,17 @@ async function sendToWeb3Forms(payload) {
     const problem = document.querySelector('#consultation-problem').value.trim();
     const message = [`Name: ${name}`, `Email: ${email}`, `Company: ${company || '(not provided)'}`, '', 'Where work gets stuck:', problem].join('\n');
     status.textContent = 'Sending…';
+    submitButton.disabled = true;
     try {
       await sendToWeb3Forms({ subject: `Free workflow consultation request from ${name}`, name, email, company, message });
       status.textContent = 'Sent — Joe will follow up directly.';
       form.reset();
+      try { window.mtTrackInquiryConversion?.(); } catch { /* Tracking is non-blocking. */ }
     } catch (err) {
       status.textContent = "Couldn't send automatically, opening your mail app instead…";
       location.href = `mailto:joe@virtastack.com?subject=${encodeURIComponent('Free workflow consultation request')}&body=${encodeURIComponent(message)}`;
+    } finally {
+      submitButton.disabled = false;
     }
   });
 })();
@@ -467,6 +472,7 @@ window.mtInitQuestionnaire = (() => {
     const progressBar = document.querySelector('#q-progress-bar');
     let current = 0;
     let brief = '';
+    let sending = false;
 
     function activeSteps() {
       const pain = form.querySelector('input[name="painPoint"]:checked')?.value;
@@ -582,8 +588,10 @@ window.mtInitQuestionnaire = (() => {
 
     document.querySelector('#q-email').addEventListener('click', async event => {
       event.preventDefault();
+      if (sending) return;
       const subject = '30-day trial: ' + (radioAnswer('painPoint', 'painPoint-other') || 'a workflow to discuss');
       const status = document.querySelector('#q-status');
+      const sendButton = document.querySelector('#q-email');
       const nameInput = document.querySelector('#q-name');
       const emailInput = document.querySelector('#q-contact-email');
       if (!nameInput.value.trim() || !emailInput.validity.valid) {
@@ -593,12 +601,18 @@ window.mtInitQuestionnaire = (() => {
       }
       const contactBrief = `Name: ${nameInput.value.trim()}\nEmail: ${emailInput.value.trim()}\n\n${brief}`;
       status.textContent = 'Sending…';
+      sending = true;
+      sendButton.setAttribute('aria-disabled', 'true');
       try {
         await sendToWeb3Forms({ subject, name: nameInput.value.trim(), email: emailInput.value.trim(), message: contactBrief });
         status.textContent = 'Sent — Joe will follow up soon. You can still copy or download this brief for yourself below.';
+        try { window.mtTrackInquiryConversion?.(); } catch { /* Tracking is non-blocking. */ }
       } catch (err) {
         status.textContent = "Couldn't send automatically, opening your mail app instead…";
         location.href = `mailto:joe@virtastack.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(contactBrief)}`;
+      } finally {
+        sending = false;
+        sendButton.removeAttribute('aria-disabled');
       }
     });
     document.querySelector('#q-copy').addEventListener('click', async () => {

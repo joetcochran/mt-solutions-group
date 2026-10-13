@@ -2,6 +2,8 @@
 (() => {
   'use strict';
   const ID = 'G-7DQS782PJN';
+  const ADS_ID = 'AW-18510570602';
+  const INQUIRY_CONVERSION = 'AW-18510570602/ZaoFCJL_r5sdEOrIw_pE';
   const CLARITY = 'yjpn9hzcac';
   const KEY = 'mt-analytics-consent-v2';
   const OWNER = 'mt-analytics-owner-excluded';
@@ -24,6 +26,7 @@
   let clarityStopped = false;
   let previousFocus;
   window['ga-disable-' + ID] = true;
+  window['ga-disable-' + ADS_ID] = true;
   const safeReferrer = () => {
     try {
       const u = new URL(document.referrer);
@@ -58,6 +61,7 @@
   function start() {
     if (!accepted || excluded() || !routes.has(location.pathname)) return;
     window['ga-disable-' + ID] = false;
+    window['ga-disable-' + ADS_ID] = false;
     startClarity();
     if (started) { window.gtag('consent', 'update', { analytics_storage: 'granted' }); return; }
     started = true;
@@ -73,6 +77,8 @@
       if (value && /^[a-zA-Z0-9_-]{1,64}$/.test(value)) config['campaign_' + part] = value;
     }
     window.gtag('config', ID, config);
+    // Connect Google Ads to this same consent-gated Google tag instance.
+    window.gtag('config', ADS_ID, { send_page_view: false, allow_google_signals: false, allow_ad_personalization_signals: false });
     window.gtag('event', 'page_view', { ...page, send_to: ID });
     const script = document.createElement('script'); script.async = true;
     script.src = 'https://www.googletagmanager.com/gtag/js?id=' + ID;
@@ -83,6 +89,7 @@
     accepted = false;
     // Google's supported opt-out flag blocks subsequent collection from this page.
     window['ga-disable-' + ID] = true;
+    window['ga-disable-' + ADS_ID] = true;
     if (clarityLoaded && !clarityStopped) {
       window.clarity('consentv2', { analytics_Storage: 'denied', ad_Storage: 'denied' });
       window.clarity('stop');
@@ -90,7 +97,7 @@
     }
     for (const cookie of document.cookie.split(';')) {
       const name = cookie.trim().split('=')[0];
-      if (!['_ga', '_ga_7DQS782PJN', '_clck', '_clsk'].includes(name)) continue;
+      if (!['_ga', '_ga_7DQS782PJN', '_gcl_au', '_gcl_aw', '_clck', '_clsk'].includes(name)) continue;
       for (const domain of ['', '; domain=virtastack.com', '; domain=www.virtastack.com']) {
         document.cookie = name + '=; Max-Age=0; path=/' + domain + '; SameSite=Lax; Secure';
       }
@@ -107,6 +114,13 @@
     else if (!simple.has(event)) return;
     window.gtag('event', event, params);
   };
+  // Called only after Web3Forms confirms an inquiry. Tracking must never affect delivery.
+  window.mtTrackInquiryConversion = () => {
+    if (!accepted || excluded() || !started) return;
+    try {
+      window.gtag('event', 'conversion', { send_to: INQUIRY_CONVERSION });
+    } catch { /* A tracking failure must never affect a successful inquiry. */ }
+  };
   document.addEventListener('click', event => {
     const link = event.target.closest('a'); if (!link) return;
     if (link.protocol === 'mailto:') window.mtAnalytics('contact_click', link.closest('.case-study') ? 'case_study' : link.closest('footer') ? 'footer' : 'page');
@@ -115,13 +129,13 @@
   const panel = document.createElement('section');
   panel.className = 'analytics-choice'; panel.hidden = true;
   panel.setAttribute('aria-labelledby', 'analytics-choice-title');
-  panel.innerHTML = '<h2 id="analytics-choice-title">May we measure what’s useful?</h2><p>Optional Google Analytics and Microsoft Clarity use cookies to measure visits, clicks and scrolling. Clarity provides heatmaps and session replays, with get-started page answers masked. The site works either way. <a href="privacy.html">Privacy details</a></p><p class="analytics-current" role="status"></p><div class="analytics-actions"><button type="button" data-choice="accepted">Allow analytics</button><button type="button" data-choice="declined">No thanks</button><button type="button" data-close hidden>Close</button></div>';
+  panel.innerHTML = '<h2 id="analytics-choice-title">Optional analytics</h2><p>Google Analytics, Google Ads and Microsoft Clarity help us improve the site. Form answers stay out of analytics, and the site works either way. <a href="privacy.html">Privacy details</a></p><p class="analytics-current" role="status"></p><div class="analytics-actions"><button type="button" data-choice="accepted">Allow</button><button type="button" data-choice="declined">No thanks</button><button type="button" data-close hidden>Close</button></div>';
   document.body.append(panel);
   const buttons = [...document.querySelectorAll('[data-analytics-settings]')];
   function show(focus) {
     previousFocus = focus ? document.activeElement : null;
     panel.hidden = false;
-    panel.querySelector('.analytics-current').textContent = excluded() ? 'Analytics is excluded in this browser.' : accepted ? 'Your current choice: analytics allowed.' : 'Analytics is currently off.';
+    panel.querySelector('.analytics-current').textContent = excluded() ? 'Analytics is excluded in this browser.' : choice() ? (accepted ? 'Current choice: allowed.' : 'Current choice: off.') : '';
     panel.querySelector('[data-choice="accepted"]').disabled = excluded();
     panel.querySelector('[data-close]').hidden = !choice();
     if (focus) panel.querySelector(excluded() ? '[data-choice="declined"]' : '[data-choice="accepted"]').focus();

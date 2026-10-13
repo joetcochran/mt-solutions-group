@@ -578,13 +578,15 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--coral-dark); ou
 @media (prefers-reduced-motion: reduce) { .chat-bubble.is-typing::after { display: none; } .chat-attachment { opacity: 1; transform: none; } }
 
 /* Optional analytics: equal-choice buttons, no modal blocking the page. */
-.analytics-choice { position: fixed; z-index: 1100; bottom: 16px; left: 16px; width: min(540px, calc(100% - 32px)); max-height: 85vh; overflow: auto; padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: var(--cream); color: var(--text); box-shadow: 0 8px 45px rgba(11,18,32,.2); }
+.analytics-choice { position: fixed; z-index: 1100; bottom: 12px; left: 12px; width: min(420px, calc(100% - 24px)); max-height: 85vh; overflow: auto; padding: 14px 16px; border: 1px solid rgba(15,23,42,.14); border-radius: 12px; background: rgba(255,253,248,.98); color: var(--text); box-shadow: 0 5px 20px rgba(11,18,32,.13); }
 .analytics-choice[hidden] { display: none; }
-.analytics-choice h2 { font-size: 1.15rem; margin: 0 0 8px; }
-.analytics-choice p { font-size: .88rem; margin: 8px 0; }
+.analytics-choice h2 { font-size: .95rem; margin: 0 0 4px; }
+.analytics-choice p { font-size: .78rem; line-height: 1.45; margin: 4px 0; }
+.analytics-choice .analytics-current:empty { display: none; }
 .analytics-choice a, .privacy-links a { text-decoration: underline; text-underline-offset: 3px; }
-.analytics-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-.analytics-actions button { background: white; color: var(--forest); border: 1px solid var(--forest); border-radius: 8px; padding: 10px 15px; cursor: pointer; }
+.analytics-actions { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 9px; }
+.analytics-actions button { background: transparent; color: var(--forest); border: 1px solid rgba(22,68,62,.65); border-radius: 7px; padding: 6px 10px; font: 650 .76rem/1.2 Inter,sans-serif; cursor: pointer; }
+.analytics-actions button[data-choice="accepted"] { background: var(--forest); color: white; }
 .analytics-actions button:disabled { opacity: .5; cursor: default; }
 .privacy-links { display: flex; flex-wrap: wrap; gap: 14px; font-size: .8rem; }
 .privacy-links button { color: inherit; background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
