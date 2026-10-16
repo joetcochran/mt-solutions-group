@@ -35,6 +35,25 @@
       return u.origin + '/';
     } catch { return ''; }
   };
+  const clarityQueryAllowed = () => {
+    if (!location.search) return true;
+    // Permit only recognized advertising/campaign parameters. Clarity sees the
+    // page URL, so arbitrary query values remain excluded.
+    const patterns = {
+      gclid: /^[a-zA-Z0-9_-]{1,256}$/,
+      dclid: /^[a-zA-Z0-9_-]{1,256}$/,
+      gbraid: /^[a-zA-Z0-9_-]{1,256}$/,
+      wbraid: /^[a-zA-Z0-9_-]{1,256}$/,
+      gclsrc: /^[a-zA-Z0-9._-]{1,32}$/,
+      gad_source: /^\d{1,8}$/,
+      gad_campaignid: /^\d{1,32}$/,
+      utm_source: /^[a-zA-Z0-9_-]{1,64}$/,
+      utm_medium: /^[a-zA-Z0-9_-]{1,64}$/,
+      utm_campaign: /^[a-zA-Z0-9_-]{1,64}$/
+    };
+    const entries = [...query.entries()];
+    return entries.length > 0 && entries.every(([key, value]) => patterns[key]?.test(value));
+  };
   const titles = { '/selected-work.html': 'Selected Work | Virtastack', '/get-started.html': '30-Day Risk-Free AI Trial | Virtastack' };
   const page = {
     page_location: location.origin + location.pathname,
@@ -42,8 +61,9 @@
     page_title: titles[location.pathname] || 'Virtastack'
   };
   function startClarity() {
-    // Clarity observes the actual URL. Exclude query-bearing visits and private referrers.
-    if (location.search || (location.hash && !/^#(top|what-we-fix|services|selected-work|consultation|fork|timeline|first-engagement|how-it-works|about|fleet-citations|field-services|multi-currency)$/.test(location.hash))) return;
+    // Clarity observes the actual URL. Allow only known campaign parameters;
+    // exclude arbitrary query values, private referrers and unknown fragments.
+    if (!clarityQueryAllowed() || (location.hash && !/^#(top|what-we-fix|services|selected-work|consultation|fork|timeline|first-engagement|how-it-works|about|fleet-citations|field-services|multi-currency)$/.test(location.hash))) return;
     try { const ref = new URL(document.referrer); if (ref.search || (hosts.has(ref.hostname) && !routes.has(ref.pathname))) return; } catch {}
     if (clarityLoaded) {
       if (clarityStopped) { window.clarity('start'); clarityStopped = false; }
