@@ -19,8 +19,10 @@
 .playground-kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 4px rgba(242,116,92,.14)}
 .playground-card h2{margin:0;color:var(--ink-deep);font:500 clamp(1.65rem,3vw,2.15rem)/1.16 Georgia,serif;letter-spacing:-.025em}
 .playground-card .playground-intro{max-width:690px;margin:0 0 8px;color:#35445c;font-size:1.04rem;font-weight:700;line-height:1.55}
-.playground-card .playground-description{max-width:690px;margin:0;color:#526077;font-size:.96rem;line-height:1.6}
 .playground-card .button{white-space:nowrap}
+.playground-capabilities{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0;padding:0;list-style:none}
+.playground-capabilities li{padding:17px 18px;border:1px solid rgba(23,61,81,.11);border-radius:12px;background:rgba(255,255,255,.72);color:#526077;font-size:.88rem;line-height:1.55}
+.playground-capabilities strong{display:block;margin-bottom:4px;color:var(--forest);font-size:.76rem;text-transform:uppercase;letter-spacing:.055em}
 .playground-montage{grid-column:1/-1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:158px 188px;gap:12px;margin:8px 0 0}
 .playground-shot{display:block;overflow:hidden;border:1px solid rgba(23,61,81,.14);border-radius:12px;background:#fff;box-shadow:0 12px 28px rgba(23,48,83,.13);transition:transform .2s ease,box-shadow .2s ease}
 .playground-shot:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(23,48,83,.18)}
@@ -47,6 +49,7 @@
 .playground-card .button{width:100%;white-space:normal;text-align:center}
 .playground-heading{grid-template-columns:42px minmax(0,1fr);gap:12px}
 .playground-logo{width:42px;height:42px;border-radius:10px}
+.playground-capabilities{grid-template-columns:1fr}
 .playground-montage{display:flex;gap:12px;margin-inline:-24px;padding:0 24px 12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin}
 .playground-shot{flex:0 0 84%;height:auto;scroll-snap-align:center}
 .playground-shot img{height:auto;aspect-ratio:auto;object-fit:contain}
@@ -96,10 +99,14 @@
         <h2 id="playground-heading">Meet Glidepath—built to show the Virtastack approach in action.</h2>
       </div>
     </div>
-    <p class="playground-intro">Explore a working vehicle-pricing playground built around a real operational decision: when and how to adjust aging inventory.</p>
-    <p class="playground-description">Choose a vehicle, compare market context, test a pricing strategy, and preview a glide path. It is a hands-on example of how disconnected data and business rules can become a focused, usable workflow.</p>
+    <p class="playground-intro">Glidepath is a working example of an agent turning disconnected dealership systems into one guarded pricing workflow.</p>
   </div>
   <a class="button button-primary" href="https://glidepath.virtastack.com/" target="_blank" rel="noopener noreferrer">Try the playground <span aria-hidden="true">↗</span></a>
+  <ul class="playground-capabilities" aria-label="How the Glidepath agent works">
+    <li><strong>Harvests inventory nightly</strong>The agent pulls current used-car data from the dealership's inventory system every night.</li>
+    <li><strong>Executes the chosen strategy</strong>Each vehicle is repriced nightly against the glide path selected by the user.</li>
+    <li><strong>Checks the CRM before acting</strong>If the CRM shows an upcoming appointment for a vehicle, the agent freezes its price until the appointment has passed.</li>
+  </ul>
   <figure class="playground-montage" aria-label="Glidepath interface screenshots">
     <a class="playground-shot playground-shot-detail" href="assets/glidepath-vehicle-detail.jpg" target="_blank" rel="noopener" aria-label="Open full vehicle detail and pricing setup screenshot">
       <img src="assets/glidepath-vehicle-detail.jpg" width="866" height="646" alt="Vehicle detail with market rank, asking price, cost, and glide path controls" loading="lazy" decoding="async" />
